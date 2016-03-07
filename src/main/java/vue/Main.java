@@ -5,10 +5,11 @@
  */
 package vue;
 
-import dao.AdherentDao;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import metier.modele.Adherent;
+import metier.service.ServiceMetier;
+import metier.service.ServiceTechnique;
+import modele.Activite;
+import modele.Lieu;
 
 /**
  *
@@ -18,7 +19,12 @@ public class Main {
     
     public static void main(String[] args) {
         
-        AdherentDao adhDao = new AdherentDao();
-        adhDao.create(new Adherent("Dubois", "François", "30 rue des fleurs", "fdubois@gmail.com"));
+        ServiceMetier serviceMetier = new ServiceMetier();
+        ServiceTechnique serviceTehnique = new ServiceTechnique();
+        
+        serviceMetier.creerActivite(new Activite("Foot", true, 22));
+        serviceMetier.creerActivite(new Activite("Belotte", false, 4));
+        serviceMetier.creerLieu(new Lieu("Gymnase test", "type test", "00 adresse test, 69100 Villeurbanne"));
+        
     }  
 }
