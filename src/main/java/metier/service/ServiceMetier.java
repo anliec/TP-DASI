@@ -12,7 +12,7 @@ import dao.LieuDao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import metier.modele.Adherent;
-import modele.Activite;
+import metier.modele.Activite;
 import modele.Lieu;
 
 /**

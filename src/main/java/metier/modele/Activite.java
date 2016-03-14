@@ -1,4 +1,4 @@
-package modele;
+package metier.modele;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
