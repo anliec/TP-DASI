@@ -149,5 +149,9 @@ public class ServiceMetier {
             System.err.println("entiyManager creation error");
             e.printStackTrace();
         }
-    }  
+    }
+    
+    public List<Evenement> afficherEvenementSansLieu() {
+        
+    }
 }
