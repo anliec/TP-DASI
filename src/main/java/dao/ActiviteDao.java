@@ -1,9 +1,10 @@
 package dao;
 
-import java.util.List;
+import metier.modele.Activite;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import metier.modele.Activite;
+import java.util.List;
 
 public class ActiviteDao {
     
@@ -33,6 +34,18 @@ public class ActiviteDao {
         Activite activite = null;
         try {
             activite = em.find(Activite.class, id);
+        }
+        catch(Exception e) {
+            throw e;
+        }
+        return activite;
+    }
+
+    public Activite findByName(String name) throws Throwable {
+        EntityManager em = JpaUtil.obtenirEntityManager();
+        Activite activite = null;
+        try {
+            activite = em.find(Activite.class, name);
         }
         catch(Exception e) {
             throw e;

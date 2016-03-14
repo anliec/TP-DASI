@@ -1,9 +1,10 @@
 package dao;
 
-import java.util.List;
+import metier.modele.Evenement;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import metier.modele.Evenement;
+import java.util.List;
 
 public class EvenementDao {
     
@@ -67,4 +68,6 @@ public class EvenementDao {
         
         return evenement;
     }
+
+
 }
