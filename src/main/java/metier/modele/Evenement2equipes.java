@@ -14,35 +14,35 @@ import javax.persistence.ManyToMany;
 public class Evenement2equipes extends Evenement {
 
     @ManyToMany
-    @JoinTable(name = "ListeEquipe1")
-    private List<Adherent> listeEquipe1;
+    @JoinTable(name = "ListeEquipeA")
+    private List<Adherent> equipeA;
     @ManyToMany
-    @JoinTable(name = "ListeEquipe2")
-    private List<Adherent> listeEquipe2;
+    @JoinTable(name = "ListeEquipeB")
+    private List<Adherent> equipeB;
 
     public Evenement2equipes() {
         super();
     }
 
-    public Evenement2equipes(Date date, Activite activite, List<Adherent> listeEquipe1, List<Adherent> listeEquipe2) {
+    public Evenement2equipes(Date date, Activite activite, List<Adherent> listeEquipeA, List<Adherent> listeEquipeB) {
         super(date, activite);
-        this.listeEquipe1 = listeEquipe1;
-        this.listeEquipe2 = listeEquipe2;
+        this.equipeA = listeEquipeA;
+        this.equipeB = listeEquipeB;
     }
 
-    public List<Adherent> getListeEquipe1() {
-        return listeEquipe1;
+    public List<Adherent> getListeEquipeA() {
+        return equipeA;
     }
 
-    public List<Adherent> getListeEquipe2() {
-        return listeEquipe2;
+    public List<Adherent> getListeEquipeB() {
+        return equipeB;
     }
 
-    public void setListeEquipe1(List<Adherent> listeEquipe1) {
-        this.listeEquipe1 = listeEquipe1;
+    public void setListeEquipeA(List<Adherent> listeEquipeA) {
+        this.equipeA = listeEquipeA;
     }
 
-    public void setListeEquipe2(List<Adherent> listeEquipe2) {
-        this.listeEquipe2 = listeEquipe2;
+    public void setListeEquipeB(List<Adherent> listeEquipeB) {
+        this.equipeB = listeEquipeB;
     }
 }

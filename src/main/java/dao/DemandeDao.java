@@ -44,7 +44,7 @@ public class DemandeDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> demande = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Activite a");
+            Query q = em.createQuery("SELECT a FROM Demande a");
             demande = (List<Demande>) q.getResultList();
         }
         catch(Exception e) {

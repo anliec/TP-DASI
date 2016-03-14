@@ -44,7 +44,21 @@ public class EvenementDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Evenement> evenement = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Activite a");
+            Query q = em.createQuery("SELECT a FROM Evenement a");
+            evenement = (List<Evenement>) q.getResultList();
+        }
+        catch(Exception e) {
+            throw e;
+        }
+        
+        return evenement;
+    }
+    
+    public List<Evenement> findSansLieu() throws Throwable {
+        EntityManager em = JpaUtil.obtenirEntityManager();
+        List<Evenement> evenement = null;
+        try {
+            Query q = em.createQuery("SELECT a FROM Evenement WHERE Lieu_Id IS NULL a");
             evenement = (List<Evenement>) q.getResultList();
         }
         catch(Exception e) {

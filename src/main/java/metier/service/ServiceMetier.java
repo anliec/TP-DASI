@@ -11,6 +11,7 @@ import dao.DemandeDao;
 import dao.EvenementDao;
 import dao.JpaUtil;
 import dao.LieuDao;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import metier.modele.Adherent;
@@ -151,7 +152,57 @@ public class ServiceMetier {
         }
     }
     
-    public List<Evenement> afficherEvenementSansLieu() {
+    public List<Evenement> obtenirEvenementSansLieu() {
         
+        List<Evenement> listeEvenements = null;
+                
+        try {
+            JpaUtil.creerEntityManager();
+           
+            try {
+                JpaUtil.ouvrirTransaction();
+                listeEvenements = evenementDao.findSansLieu();
+                JpaUtil.validerTransaction();
+           
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            JpaUtil.fermerEntityManager();
+            
+        } catch (Exception e) {
+            
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+            return listeEvenements;
     }
+    
+    public void affecterLieuAEvenement(Lieu lieu, Evenement evenement) {
+        
+        evenement.setLieu(lieu);
+        
+         try {
+            JpaUtil.creerEntityManager();
+           
+            try {
+                JpaUtil.ouvrirTransaction();
+                evenementDao.update(evenement);
+                JpaUtil.validerTransaction();
+           
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            JpaUtil.fermerEntityManager();
+            
+        } catch (Exception e) {
+            
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }    
+    }
+    
 }

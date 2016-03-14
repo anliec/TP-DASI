@@ -18,6 +18,7 @@ public class Demande implements Serializable {
     private Date dateEvenement;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDemande;
+    private Boolean traite;
     @ManyToOne
     private Adherent demandeur;
     @ManyToOne
@@ -30,6 +31,7 @@ public class Demande implements Serializable {
        
         this.dateEvenement = dateEvenement;
         this.dateDemande = dateDemande;
+        this.traite = false;
         this.demandeur = demandeur;
         this.activite = activite;
     }
@@ -46,6 +48,10 @@ public class Demande implements Serializable {
         return dateDemande;
     }
 
+    public Boolean getTraite() {
+        return traite;
+    }
+
     public Adherent getDemandeur() {
         return demandeur;
     }
@@ -60,6 +66,10 @@ public class Demande implements Serializable {
 
     public void setDateDemande(Date dateDemande) {
         this.dateDemande = dateDemande;
+    }
+
+    public void setTraite(Boolean traite) {
+        this.traite = traite;
     }
 
     public void setDemandeur(Adherent demandeur) {
