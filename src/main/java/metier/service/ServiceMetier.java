@@ -5,12 +5,20 @@
  */
 package metier.service;
 
-import dao.*;
-import metier.modele.*;
-
+import dao.ActiviteDao;
+import dao.AdherentDao;
+import dao.DemandeDao;
+import dao.EvenementDao;
+import dao.JpaUtil;
+import dao.LieuDao;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import metier.modele.Adherent;
+import metier.modele.Activite;
+import metier.modele.Demande;
+import metier.modele.Evenement;
+import metier.modele.Lieu;
 
 /**
  *
@@ -144,7 +152,7 @@ public class ServiceMetier {
         }
     }
     
-    public List<Evenement> afficherEvenementSansLieu() {
+    public List<Evenement> obtenirEvenementSansLieu() {
         
         List<Evenement> listeEvenements = null;
 
@@ -228,5 +236,4 @@ public class ServiceMetier {
             e.printStackTrace();
         }
     }
-
 }
