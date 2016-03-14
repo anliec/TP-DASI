@@ -1,9 +1,11 @@
 package dao;
 
-import java.util.List;
+import metier.modele.Demande;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import metier.modele.Demande;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DemandeDao {
     
@@ -52,5 +54,26 @@ public class DemandeDao {
         }
         
         return demande;
+    }
+
+    public List<Demande> findByActivitee(String activiteeName) throws Throwable {
+        EntityManager em = JpaUtil.obtenirEntityManager();
+        List<Demande> demande = null;
+        try {
+            Query q = em.createQuery("SELECT a FROM Demande a");
+            demande = (List<Demande>) q.getResultList();
+        }
+        catch(Exception e) {
+            throw e;
+        }
+        List<Demande> ret = new LinkedList<>();
+        for (Demande d:demande) {
+            if(d.getActivite().equals(activiteeName))
+            {
+                ret.add(d);
+            }
+        }
+
+        return ret;
     }
 }
