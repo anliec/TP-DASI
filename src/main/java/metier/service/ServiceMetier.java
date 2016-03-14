@@ -183,7 +183,7 @@ public class ServiceMetier {
         
         evenement.setLieu(lieu);
         
-         try {
+        try {
             JpaUtil.creerEntityManager();
            
             try {
