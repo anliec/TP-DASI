@@ -3,7 +3,7 @@ package dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import modele.Activite;
+import metier.modele.Activite;
 
 public class ActiviteDao {
     

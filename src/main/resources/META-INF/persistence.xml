@@ -3,11 +3,15 @@
   <persistence-unit name="fr.insalyon.dasi_TP-COLLECTIF-B3129_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>metier.modele.Adherent</class>
-    <class>modele.Activite</class>
-    <class>modele.Lieu</class>
+    <class>metier.modele.Activite</class>
+    <class>metier.modele.Demande</class>
+    <class>metier.modele.Evenement</class>
+    <class>metier.modele.Lieu</class>
+    <class>metier.modele.Evenement2equipes</class>
+    <class>metier.modele.Evenement1equipe</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Collectif-B3129"/>
-      <property name="javax.persistence.jdbc.password" value="b3129"/>
+      <property name="javax.persistence.jdbc.password" value="B3129"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.user" value="PLNico"/>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

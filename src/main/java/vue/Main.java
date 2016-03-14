@@ -5,11 +5,16 @@
  */
 package vue;
 
+import java.util.Date;
+import java.util.LinkedList;
 import metier.modele.Adherent;
 import metier.service.ServiceMetier;
 import metier.service.ServiceTechnique;
-import modele.Activite;
-import modele.Lieu;
+import metier.modele.Activite;
+import metier.modele.Demande;
+import metier.modele.Evenement1equipe;
+import metier.modele.Evenement2equipes;
+import metier.modele.Lieu;
 
 /**
  *
@@ -21,10 +26,25 @@ public class Main {
         
         ServiceMetier serviceMetier = new ServiceMetier();
         ServiceTechnique serviceTehnique = new ServiceTechnique();
-        
-        serviceMetier.creerActivite(new Activite("Foot", true, 22));
-        serviceMetier.creerActivite(new Activite("Belotte", false, 4));
-        serviceMetier.creerLieu(new Lieu("Gymnase test", "type test", "00 adresse test, 69100 Villeurbanne"));
-        
+        LinkedList<Adherent> adherents = new LinkedList<Adherent>();
+        LinkedList<Adherent> adhlist1 = new LinkedList<Adherent>();
+        LinkedList<Adherent> adhlist2 = new LinkedList<Adherent>();
+        Adherent adh1 = new Adherent("nom1", "prenom1", "adresse1", "mail1");
+        Adherent adh2 = new Adherent("nom12", "prenom12", "adresse12", "mail12");
+        adherents.add(adh1);
+        adherents.add(adh2);
+        adhlist1.add(adh1);
+        adhlist2.add(adh2);
+        serviceMetier.creerAdherent(adh1);
+        serviceMetier.creerAdherent(adh2);
+        Activite foot = new Activite("Foot", true, 2);
+        Activite belotte = new Activite("Belotte", false, 2);
+        serviceMetier.creerActivite(foot);
+        serviceMetier.creerActivite(belotte);
+        Lieu lieu = new Lieu("Gymnase test", "type test", "00 adresse test, 69100 Villeurbanne");
+        serviceMetier.creerLieu(lieu);
+        serviceMetier.creerDemande(new Demande(new Date(), new Date(), adh1, foot));
+        serviceMetier.creerEvenement(new Evenement1equipe(new Date(), belotte, adherents));
+        serviceMetier.creerEvenement(new Evenement2equipes(new Date(), foot, adhlist1, adhlist2));
     }  
 }

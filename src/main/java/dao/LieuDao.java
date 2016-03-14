@@ -3,7 +3,7 @@ package dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import modele.Lieu;
+import metier.modele.Lieu;
 
 public class LieuDao {
     

@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 public class Demande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateEvenement;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -34,7 +34,7 @@ public class Demande implements Serializable {
         this.activite = activite;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

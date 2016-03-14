@@ -3,54 +3,54 @@ package dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import modele.Activite;
+import metier.modele.Demande;
 
 public class DemandeDao {
     
-    public void create(Activite activite) throws Throwable {
+    public void create(Demande demande) throws Throwable {
         EntityManager em = JpaUtil.obtenirEntityManager();
         try {
-            em.persist(activite);
+            em.persist(demande);
         }
         catch(Exception e) {
             throw e;
         }
     }
     
-    public Activite update(Activite activite) throws Throwable {
+    public Demande update(Demande demande) throws Throwable {
         EntityManager em = JpaUtil.obtenirEntityManager();
         try {
-            activite = em.merge(activite);
+            demande = em.merge(demande);
         }
         catch(Exception e){
             throw e;
         }
-        return activite;
+        return demande;
     }
     
-    public Activite findById(long id) throws Throwable {
+    public Demande findById(long id) throws Throwable {
         EntityManager em = JpaUtil.obtenirEntityManager();
-        Activite activite = null;
+        Demande demande = null;
         try {
-            activite = em.find(Activite.class, id);
+            demande = em.find(Demande.class, id);
         }
         catch(Exception e) {
             throw e;
         }
-        return activite;
+        return demande;
     }
     
-    public List<Activite> findAll() throws Throwable {
+    public List<Demande> findAll() throws Throwable {
         EntityManager em = JpaUtil.obtenirEntityManager();
-        List<Activite> activites = null;
+        List<Demande> demande = null;
         try {
             Query q = em.createQuery("SELECT a FROM Activite a");
-            activites = (List<Activite>) q.getResultList();
+            demande = (List<Demande>) q.getResultList();
         }
         catch(Exception e) {
             throw e;
         }
         
-        return activites;
+        return demande;
     }
 }

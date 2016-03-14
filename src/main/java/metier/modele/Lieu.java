@@ -1,4 +1,4 @@
-package modele;
+package metier.modele;
 
 import com.google.maps.model.LatLng;
 import java.io.Serializable;
