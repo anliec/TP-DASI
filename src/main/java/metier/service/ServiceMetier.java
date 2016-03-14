@@ -152,7 +152,7 @@ public class ServiceMetier {
         }
     }
     
-    public List<Evenement> obtenirEvenementSansLieu() {
+    public List<Evenement> afficherEvenementSansLieu() {
         
         List<Evenement> listeEvenements = null;
 
@@ -178,9 +178,8 @@ public class ServiceMetier {
         }
             return listeEvenements;
     }
-    
-    public void rechercherEtCreerEvenement(String nomActivitee){
 
+    public void rechercherEtCreerEvenement(String nomActivitee){
         try {
             JpaUtil.creerEntityManager();
 
@@ -236,4 +235,5 @@ public class ServiceMetier {
             e.printStackTrace();
         }
     }
+
 }
