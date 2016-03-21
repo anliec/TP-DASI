@@ -188,9 +188,8 @@ public class ServiceMetier {
         }
             return listeEvenements;
     }
-    
-    public void rechercherEtCreerEvenement(String nomActivitee){
 
+    public void rechercherEtCreerEvenement(String nomActivitee){
         try {
             JpaUtil.creerEntityManager();
 
@@ -246,4 +245,5 @@ public class ServiceMetier {
             e.printStackTrace();
         }
     }
+
 }

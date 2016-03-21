@@ -4,6 +4,7 @@ import metier.modele.Demande;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class DemandeDao {
         return demande;
     }
 
-    public List<Demande> findByActivitee(String activiteeName) throws Throwable {
+    public List<Demande> findNotValidedByActiviteeAndByDate(String activiteeName, Date demandeDate) throws Throwable {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> demande = null;
         try {
@@ -68,7 +69,7 @@ public class DemandeDao {
         }
         List<Demande> ret = new LinkedList<>();
         for (Demande d:demande) {
-            if(d.getActivite().equals(activiteeName))
+            if(d.getActivite().equals(activiteeName) && d.getTraite().equals(false) && d.getDateEvenement().equals(demandeDate))
             {
                 ret.add(d);
             }
