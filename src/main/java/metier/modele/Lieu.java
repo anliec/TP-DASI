@@ -36,7 +36,6 @@ public class Lieu implements Serializable {
         return denomination;
     }
 
-
     public String getDescription() {
         return description;
     }
@@ -53,7 +52,7 @@ public class Lieu implements Serializable {
         return latitude;
     }
     
-      public void setCoordonnees(LatLng latLng) {
+    public void setCoordonnees(LatLng latLng) {
         this.longitude = latLng.lng;
         this.latitude = latLng.lat;
     }

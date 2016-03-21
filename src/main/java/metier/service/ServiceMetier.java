@@ -24,6 +24,7 @@ import metier.modele.Lieu;
  *
  * @author pllefebvre
  */
+
 public class ServiceMetier {
     
     private final ActiviteDao activiteDao = new ActiviteDao();
@@ -33,6 +34,8 @@ public class ServiceMetier {
     private final EvenementDao evenementDao = new EvenementDao();
     
     public void creerAdherent(Adherent adherent) {
+        
+        ServiceTechnique.majCoordonnees(adherent);
         
         try {
             JpaUtil.creerEntityManager();
@@ -81,6 +84,8 @@ public class ServiceMetier {
     } 
     
     public void creerLieu(Lieu lieu) {
+        
+        ServiceTechnique.majCoordonnees(lieu);
         
         try {
             JpaUtil.creerEntityManager();
@@ -151,6 +156,11 @@ public class ServiceMetier {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Methode renvoye une liste de tous les evenements affectés à aucun lieu
+     * @return la liste decrtie ci-dessus
+     */
     
     public List<Evenement> obtenirEvenementSansLieu() {
         
