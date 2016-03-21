@@ -43,36 +43,36 @@ public class ServiceMetier {
            
             try {
                 JpaUtil.ouvrirTransaction();
-                
+
                 if(adherentDao.findByMail(adherent.getMail()) == null) {
-                   
+
                     adherentDao.create(adherent);
                     JpaUtil.validerTransaction();
                     ServiceTechnique.mailConfirmationInscriptionAdherent(adherent);
                     ServiceTechnique.mailConfirmationInscriptionResponsable(adherent);
                     return 1;
-                
+
                 } else {
-                    
+
                     ServiceTechnique.mailInfirmationInscriptionAdherent(adherent);
                     ServiceTechnique.mailInfirmationInscriptionResponsable(adherent);
                     JpaUtil.annulerTransaction();
                 }
-                
+
             } catch (Throwable ex) {
                 JpaUtil.annulerTransaction();
                 Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
-                
+
             }
             
             JpaUtil.fermerEntityManager();
-           
+
         } catch (Exception e) {
             
             System.err.println("entiyManager creation error");
             e.printStackTrace();
         }
-        
+
         return 0;
     }
     
@@ -174,6 +174,48 @@ public class ServiceMetier {
         }
     }
 
+    public Evenement trouverEvenement(long id){
+        Evenement ret=null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = evenementDao.findById(id);
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public Lieu trouverLieu(long id){
+        Lieu ret=null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = lieuDao.findById(id);
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
     public Adherent trouverAdherent(String mail){
         Adherent ret=null;
         try {
@@ -181,6 +223,27 @@ public class ServiceMetier {
             try {
                 JpaUtil.ouvrirTransaction();
                 ret = adherentDao.findByMail(mail);
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public Adherent trouverAdherent(long id){
+        Adherent ret=null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = adherentDao.findById(id);
                 JpaUtil.validerTransaction();
 
             } catch (Throwable ex) {
@@ -261,6 +324,28 @@ public class ServiceMetier {
         return ret;
     }
 
+    public List<Demande> afficherDemandesTrierParDateDescPourAdherent(Adherent adherent)
+    {
+        List<Demande> ret =null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = demandeDao.findByAdherentOrderByDateDesc(adherent);
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
     public List<Demande> obtenirDemandesTrierParActivitee()
     {
         List<Demande> ret =null;
@@ -282,7 +367,29 @@ public class ServiceMetier {
         }
         return ret;
     }
-    
+
+    public List<Demande> afficherDemandesTrierParActiviteeDesc()
+    {
+        List<Demande> ret =null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = demandeDao.findAllOrderByActiviteDesc();
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
     /**
      * Methode renvoye une liste de tous les evenements affectés à aucun lieu
      * @return la liste decrtie ci-dessus
@@ -397,9 +504,9 @@ public class ServiceMetier {
             e.printStackTrace();
         }
     }
-    
+
     public List<Lieu> obtenirLieux() {
-        
+
         List<Lieu> ret =null;
         try {
             JpaUtil.creerEntityManager();
@@ -419,4 +526,6 @@ public class ServiceMetier {
         }
         return ret;
     }
+
+
 }
