@@ -74,7 +74,11 @@ public class ServiceMetier {
 
         return 0;
     }
-    
+
+    /**
+     * Methode permettant d'ajouter une activite a la base
+     * @param activite l'activite a ajouter
+     */
     public void creerActivite(Activite activite) {
         
         try {
@@ -97,8 +101,12 @@ public class ServiceMetier {
             System.err.println("entiyManager creation error");
             e.printStackTrace();
         }
-    } 
-    
+    }
+
+    /**
+     * Methode permettant d'ajouter un lieu a la base
+     * @param lieu l'adherent a ajouter
+     */
     public void creerLieu(Lieu lieu) {
         
         ServiceTechnique.majCoordonnees(lieu);

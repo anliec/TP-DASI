@@ -21,7 +21,7 @@ public class Lieu implements Serializable {
 
     public Lieu() {
     }
-     public Lieu(String denomination, String description, String adresse) {
+    public Lieu(String denomination, String description, String adresse) {
         this.denomination = denomination;
         this.description = description;
         this.adresse = adresse;

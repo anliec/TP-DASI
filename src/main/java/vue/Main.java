@@ -69,6 +69,7 @@ public class Main {
         System.out.println(" 4) Creer un Adherent");
         System.out.println(" 5) Creer une Demande");
         System.out.println(" 6) Creer une Activite");
+        System.out.println(" 7) Creer un Lieu");
         System.out.println(" 0) Quitter");
         System.out.println();
         System.out.print("Que voulez-vous faire ? : ");
@@ -96,6 +97,9 @@ public class Main {
                 break;
             case 6:
                 creerActivite();
+                break;
+            case 7:
+                creerLieu();
                 break;
             default:
                 System.out.println("saissie incorect, veulliez entrer une valeur correcte");
@@ -222,5 +226,20 @@ public class Main {
         int nbrParticipant = sc.nextInt();
         System.out.println();
         serviceMetier.creerActivite(new Activite(nom,equipe,nbrParticipant));
+    }
+
+    public static void creerLieu(){
+        System.out.println();
+        System.out.println("Creation d'un nouveau lieu:");
+        System.out.print("Quel est le nom de ce lieu ?: ");
+        String nom = sc.next();
+        System.out.println();
+        System.out.print("Pouvez-vous donner une description de ce lieu ?: ");
+        String description = sc.next();
+        System.out.println();
+        System.out.print("Pouvez-vous donner l'adresse de ce lieu ?: ");
+        String adresse = sc.next();
+        System.out.println();
+        serviceMetier.creerLieu(new Lieu(nom,description,adresse));
     }
 }
