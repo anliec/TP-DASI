@@ -5,20 +5,14 @@
  */
 package metier.service;
 
-import dao.ActiviteDao;
-import dao.AdherentDao;
-import dao.DemandeDao;
-import dao.EvenementDao;
-import dao.JpaUtil;
-import dao.LieuDao;
+import dao.*;
+import metier.modele.*;
+
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import metier.modele.Adherent;
-import metier.modele.Activite;
-import metier.modele.Demande;
-import metier.modele.Evenement;
-import metier.modele.Lieu;
 
 /**
  *
@@ -151,7 +145,72 @@ public class ServiceMetier {
             e.printStackTrace();
         }
     }
-    
+
+    public Adherent trouverAdherent(String mail){
+        Adherent ret=null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = adherentDao.findByMail(mail);
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public Activite trouverActivite(String name)
+    {
+        Activite ret=null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = activiteDao.findByName(name)
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public List<Activite> afficherActivitees()
+    {
+        List<Activite> ret =null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = activiteDao.findAll();
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
     public List<Evenement> afficherEvenementSansLieu() {
         
         List<Evenement> listeEvenements = null;
@@ -179,20 +238,40 @@ public class ServiceMetier {
             return listeEvenements;
     }
 
-    public void rechercherEtCreerEvenement(String nomActivitee){
+    /**
+     * @param activite activitee a chercher
+     * @param date date de l'activitee
+     * @return l'evenement creer si la creation a eu lieu, null sinon
+     */
+    public Evenement rechercherEtCreerEvenement(Activite activite, Date date){
+        Evenement event = null;
         try {
             JpaUtil.creerEntityManager();
 
             try {
                 JpaUtil.ouvrirTransaction();
-                List<Demande> demandes = demandeDao.findByActivitee(nomActivitee);
-                Activite activite = activiteDao.findByName(nomActivitee);
-                if(activite.getNbParticipants() < demandes.size() )
-                {
-
+                List<Demande> demandes = demandeDao.findNotValidedByActiviteeAndByDate(activite, date);
+                if(activite.getNbParticipants() <= demandes.size() ) {
+                    LinkedList<Adherent> equipeA = new LinkedList<>();
+                    LinkedList<Adherent> equipeB = new LinkedList<>();
+                    //répartie les demendeurs dans les équipes (si plusieurs équipes)
+                    for(Demande d:demandes) {
+                        Adherent a=d.getDemandeur();
+                        if(equipeA.size() <= equipeB.size() || !activite.isParEquipe()) {
+                            equipeA.add(a);
+                        }
+                        else {
+                            equipeB.add(a);
+                        }
+                    }
+                    if(activite.isParEquipe()) {
+                        event = new Evenement2equipes(date,activite,equipeA,equipeB);
+                    }
+                    else{
+                        event = new Evenement1equipe(date,activite,equipeA);
+                    }
+                    evenementDao.create(event);
                 }
-
-
                 JpaUtil.validerTransaction();
 
             } catch (Throwable ex) {
@@ -207,7 +286,7 @@ public class ServiceMetier {
             System.err.println("entiyManager creation error");
             e.printStackTrace();
         }
-
+        return event;
     }
 
     public void affecterLieuAEvenement(Lieu lieu, Evenement evenement) {

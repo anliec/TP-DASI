@@ -1,5 +1,6 @@
 package dao;
 
+import metier.modele.Activite;
 import metier.modele.Demande;
 
 import javax.persistence.EntityManager;
@@ -57,7 +58,7 @@ public class DemandeDao {
         return demande;
     }
 
-    public List<Demande> findNotValidedByActiviteeAndByDate(String activiteeName, Date demandeDate) throws Throwable {
+    public List<Demande> findNotValidedByActiviteeAndByDate(Activite activite, Date demandeDate) throws Throwable {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> demande = null;
         try {
@@ -69,7 +70,7 @@ public class DemandeDao {
         }
         List<Demande> ret = new LinkedList<>();
         for (Demande d:demande) {
-            if(d.getActivite().equals(activiteeName) && d.getTraite().equals(false) && d.getDateEvenement().equals(demandeDate))
+            if(d.getActivite().equals(activite) && d.getTraite().equals(false) && d.getDateEvenement().equals(demandeDate))
             {
                 ret.add(d);
             }
