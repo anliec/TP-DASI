@@ -154,7 +154,6 @@ public class Main {
             long eventId = sc.nextLong();
             event = serviceMetier.trouverEvenement(eventId);
         }while(event==null);
-        //TODO finir liste lieux
         System.out.print("Voulez vous une liste des lieux ? [O/n]:");
         r = sc.next();
         if(!r.equals("n") && !r.equals("N")){
