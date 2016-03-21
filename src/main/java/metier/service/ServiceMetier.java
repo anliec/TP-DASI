@@ -174,7 +174,7 @@ public class ServiceMetier {
             JpaUtil.creerEntityManager();
             try {
                 JpaUtil.ouvrirTransaction();
-                ret = activiteDao.findByName(name)
+                ret = activiteDao.findByName(name);
                 JpaUtil.validerTransaction();
 
             } catch (Throwable ex) {
@@ -197,6 +197,50 @@ public class ServiceMetier {
             try {
                 JpaUtil.ouvrirTransaction();
                 ret = activiteDao.findAll();
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public List<Demande> afficherDemandesTrierParDatePourAdherent(Adherent adherent)
+    {
+        List<Demande> ret =null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = demandeDao.findByAdherentOrderByDate(adherent);
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public List<Demande> afficherDemandesTrierParActivitee()
+    {
+        List<Demande> ret =null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = demandeDao.findAllOrderByActivite();
                 JpaUtil.validerTransaction();
 
             } catch (Throwable ex) {

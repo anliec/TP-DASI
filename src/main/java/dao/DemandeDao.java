@@ -1,6 +1,7 @@
 package dao;
 
 import metier.modele.Activite;
+import metier.modele.Adherent;
 import metier.modele.Demande;
 
 import javax.persistence.EntityManager;
@@ -76,6 +77,40 @@ public class DemandeDao {
             }
         }
 
+        return ret;
+    }
+
+    public List<Demande> findByAdherentOrderByDate(Adherent adherent) throws Throwable {
+        EntityManager em = JpaUtil.obtenirEntityManager();
+        List<Demande> demande = null;
+        try {
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY dateEvenement");
+            demande = (List<Demande>) q.getResultList();
+        }
+        catch(Exception e) {
+            throw e;
+        }
+        List<Demande> ret = new LinkedList<>();
+        for (Demande d:demande) {
+            if(d.getDemandeur().equals(adherent))
+            {
+                ret.add(d);
+            }
+        }
+
+        return ret;
+    }
+
+    public List<Demande> findAllOrderByActivite() throws Throwable {
+        EntityManager em = JpaUtil.obtenirEntityManager();
+        List<Demande> ret = null;
+        try {
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY activite");
+            ret = (List<Demande>) q.getResultList();
+        }
+        catch(Exception e) {
+            throw e;
+        }
         return ret;
     }
 }
