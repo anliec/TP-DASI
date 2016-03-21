@@ -27,7 +27,13 @@ public class ServiceMetier {
     private final DemandeDao demandeDao = new DemandeDao();
     private final EvenementDao evenementDao = new EvenementDao();
     
-    public void creerAdherent(Adherent adherent) {
+    /**
+     * Methode permettant d'ajouter un adherent a la base, seulement si celui-ci
+     * identife par son adresse mail n'existe pas deja dans la base de donne
+     * @param adherent l'adherent a ajouter
+     * @return 1 si l'adherent a ete correctement ajoute 0 sinon
+     */
+    public int creerAdherent(Adherent adherent) {
         
         ServiceTechnique.majCoordonnees(adherent);
         
@@ -36,21 +42,37 @@ public class ServiceMetier {
            
             try {
                 JpaUtil.ouvrirTransaction();
-                adherentDao.create(adherent);
-                JpaUtil.validerTransaction();
-           
+                
+                if(adherentDao.findByMail(adherent.getMail()) == null) {
+                   
+                    adherentDao.create(adherent);
+                    JpaUtil.validerTransaction();
+                    ServiceTechnique.mailConfirmationInscriptionAdherent(adherent);
+                    ServiceTechnique.mailConfirmationInscriptionResponsable(adherent);
+                    return 1;
+                
+                } else {
+                    
+                    ServiceTechnique.mailInfirmationInscriptionAdherent(adherent);
+                    ServiceTechnique.mailInfirmationInscriptionResponsable(adherent);
+                    JpaUtil.annulerTransaction();
+                }
+                
             } catch (Throwable ex) {
                 JpaUtil.annulerTransaction();
                 Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
             
             JpaUtil.fermerEntityManager();
-            
+           
         } catch (Exception e) {
             
             System.err.println("entiyManager creation error");
             e.printStackTrace();
         }
+        
+        return 0;
     }
     
     public void creerActivite(Activite activite) {
@@ -194,7 +216,7 @@ public class ServiceMetier {
         return ret;
     }
 
-    public List<Activite> afficherActivitees()
+    public List<Activite> obtenirActivitees()
     {
         List<Activite> ret =null;
         try {
@@ -216,7 +238,7 @@ public class ServiceMetier {
         return ret;
     }
 
-    public List<Demande> afficherDemandesTrierParDatePourAdherent(Adherent adherent)
+    public List<Demande> obtenirDemandesTrierParDatePourAdherent(Adherent adherent)
     {
         List<Demande> ret =null;
         try {
@@ -238,7 +260,7 @@ public class ServiceMetier {
         return ret;
     }
 
-    public List<Demande> afficherDemandesTrierParActivitee()
+    public List<Demande> obtenirDemandesTrierParActivitee()
     {
         List<Demande> ret =null;
         try {
@@ -342,6 +364,11 @@ public class ServiceMetier {
         return event;
     }
 
+    /**
+     * Affecte un lieu a un evenement 
+     * @param lieu le lieu a affecter
+     * @param evenement l'evenement en question
+     */
     public void affecterLieuAEvenement(Lieu lieu, Evenement evenement) {
 
         evenement.setLieu(lieu);
@@ -367,5 +394,43 @@ public class ServiceMetier {
             e.printStackTrace();
         }
     }
+    
+    public List<Lieu> obtenirLieux() {
+        
+        List<Lieu> ret =null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = lieuDao.findAll();
+                JpaUtil.validerTransaction();
 
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+    
+    /**
+     * Methode renvoyant tous les adherent a un evenement donne
+     * @param evenement l'enevenement en question
+     * @return la liste de tous les adherents
+     */
+    public List<Adherent> obtenirAdherentAEvenement(Evenement evenement) {
+        
+        if(evenement instanceof Evenement1equipe) {
+            
+            return ((Evenement1equipe) evenement).getListeAdherents();
+        } 
+      
+        List<Adherent> ret = ((Evenement2equipes) evenement).getListeEquipeA();
+        ret.addAll(((Evenement2equipes) evenement).getListeEquipeA());
+        return ret;
+    }
 }

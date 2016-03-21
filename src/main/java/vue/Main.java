@@ -25,7 +25,6 @@ public class Main {
     public static void main(String[] args) {
         
         ServiceMetier serviceMetier = new ServiceMetier();
-        ServiceTechnique serviceTehnique = new ServiceTechnique();
         LinkedList<Adherent> adherents = new LinkedList<Adherent>();
         LinkedList<Adherent> adhlist1 = new LinkedList<Adherent>();
         LinkedList<Adherent> adhlist2 = new LinkedList<Adherent>();

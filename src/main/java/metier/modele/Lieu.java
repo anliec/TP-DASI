@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Lieu implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String denomination;
     private String description;
     private String adresse;
@@ -28,7 +28,7 @@ public class Lieu implements Serializable {
     }
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

@@ -10,6 +10,7 @@ import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 import metier.modele.Adherent;
+import metier.modele.Evenement;
 import metier.modele.Lieu;
 
 /**
@@ -53,22 +54,18 @@ public abstract class ServiceTechnique {
    /**
     * Affiche sur la console le mail que l'adherent reçoit en cas de
     * confirmation de son inscription
-    * @param adherent 
+    * @param adherent l'adherent en question
     */
    public static void mailConfirmationInscriptionAdherent(Adherent adherent) {
        
-       System.out.println("mailTo : " + adherent.getMail() + "\n"
-               + "from : noreply@collectif.com\n"
-               + "object : confirmation d'incription a notre service collectif"
-               + "\n\n"
-               + "Madame, Monsieur,\n"
-               + "Nous confirmons votre inscription a notre service "
-               + "Collect'IF\n"
-               + "sous le nom : " + adherent.getPrenom() +" "+ adherent.getNom()
-               + ".\n\n"
-               + "Coridalement\n\n"
-               + "Le Service Collect'IF\n\n"
-               + "Veulliez ne pas repondre a ce mail.");
+       System.out.println("Expediteur : collectif@collectif.org\n"
+               + "Pour : " + adherent.getMail() + ",\n"
+               + "Sujet : Bienvenue chez Collect'IF\n"
+               + "\n"
+               + "Bonjour " + adherent.getNom() + "\n"
+               + "Nous vous confirmons votre adhesion a l'assocation COLLECT'IF."
+               + "Votre numero d'adherent est : 2450"
+               + ".\n\n");
    }
    
    /**
@@ -78,33 +75,60 @@ public abstract class ServiceTechnique {
     */
    public static void mailConfirmationInscriptionResponsable(Adherent adherent) {
        
-       System.out.println("mailTo : " + adherent.getMail() + "\n"
+       System.out.println("mailTo : responsable@collectif.com \n"
                + "from : noreply@collectif.com\n"
-               + "object : confirmation d'incription a notre service collectif"
+               + "object : confirmation d'incription de l'adherent : "
+               + adherent.getMail()
                + "\n\n"
                + "Madame, Monsieur,\n"
-               + "Nous confirmons votre inscription a notre service "
-               + "Collect'IF\n"
-               + "sous le nom : " + adherent.getPrenom() +" "+ adherent.getNom()
-               + ".\n\n"
+               + "Nous confirmons l'inscription a notre service Collect'IF de \n"
+               + "l'adherent : "+ adherent.getPrenom() +" "+ adherent.getNom()
+               + "a l'adresse mail : " + adherent.getMail() + ".\n\n"
                + "Coridalement\n\n"
                + "Le Service Collect'IF\n\n"
                + "Veulliez ne pas repondre a ce mail.");
    }
    
-   public static void mailInfirmationInscripton(Adherent adherent) {
+   /**
+    * Affiche sur la console le mail que l'adherent reçoit en cas d'infirmation
+    * de son inscription
+    * @param adherent l'adherent en question
+    */
+   public static void mailInfirmationInscriptionAdherent(Adherent adherent) {
        
-       System.out.println("mailTo : " + adherent.getMail() + "\n"
+       System.out.println("Expediteur : collectif@collectif.org\n"
+               + "Pour : " + adherent.getMail() + ",\n"
+               + "Sujet : Bienvenue chez Collect'IF\n"
+               + "\n"
+               + "Bonjour " + adherent.getNom() + "\n"
+               + "Votre adhesion a l'assocation COLLECT'IF a malencontreusement "
+               + "echoue... Merci de recommencer ulterieurement"
+               + ".\n\n");
+   }
+   
+   /**
+    * Affiche sur la console le mail que le responsable reçoit en cas 
+    * d'inrmationde l'inscription d'un adherent passe en parametre
+    * @param adherent l'adherent dont l'inscription a ete infirmee
+    */
+   public static void mailInfirmationInscriptionResponsable(Adherent adherent) {
+       
+         System.out.println("mailTo : responsable@collectif.com \n"
                + "from : noreply@collectif.com\n"
-               + "object : confirmation d'incription a notre service collectif"
+               + "object : confirmation d'incription de l'adherent : "
+               + adherent.getMail()
                + "\n\n"
                + "Madame, Monsieur,\n"
-               + "Nous confirmons votre inscription a notre service "
-               + "Collect'IF\n"
-               + "sous le nom : " + adherent.getPrenom() +" "+ adherent.getNom()
-               + ".\n\n"
+               + "L'inscription a notre service Collect'IF de \n"
+               + "l'adherent : "+ adherent.getPrenom() +" "+ adherent.getNom()
+               + "a l'adresse mail : " + adherent.getMail() + " a echoue.\n\n"
                + "Coridalement\n\n"
                + "Le Service Collect'IF\n\n"
                + "Veulliez ne pas repondre a ce mail.");
+   }
+   
+   public static void mailEvenement(Evenement evenement) {
+       
+       
    }
 }

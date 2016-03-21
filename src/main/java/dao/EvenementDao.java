@@ -68,6 +68,26 @@ public class EvenementDao {
         
         return evenement;
     }
-
-
+    
+    /**
+     * Methode renvoyant la liste des evenements affectes a un lieu donne, utlisee
+     * pour determiner si un lieu a deja ete affecte a un evenement
+     * @param idLieu l'id du lieu
+     * @return la lsite d'evenements en question
+     */
+    
+    public List<Evenement> findByIdLieu(Long idLieu) {
+        
+        EntityManager em = JpaUtil.obtenirEntityManager();
+        List<Evenement> evenement = null;
+        try {
+            Query q = em.createQuery("SELECT a FROM Evenement WHERE Lieu_Id = " + idLieu + " a");
+            evenement = (List<Evenement>) q.getResultList();
+        }
+        catch(Exception e) {
+            throw e;
+        }
+        
+        return evenement;
+    }
 }
