@@ -84,7 +84,28 @@ public class DemandeDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> demande = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY dateEvenement");
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY dateEvenement ASC");
+            demande = (List<Demande>) q.getResultList();
+        }
+        catch(Exception e) {
+            throw e;
+        }
+        List<Demande> ret = new LinkedList<>();
+        for (Demande d:demande) {
+            if(d.getDemandeur().equals(adherent))
+            {
+                ret.add(d);
+            }
+        }
+
+        return ret;
+    }
+
+    public List<Demande> findByAdherentOrderByDateDesc(Adherent adherent) throws Throwable {
+        EntityManager em = JpaUtil.obtenirEntityManager();
+        List<Demande> demande = null;
+        try {
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY dateEvenement DESC");
             demande = (List<Demande>) q.getResultList();
         }
         catch(Exception e) {
@@ -105,7 +126,20 @@ public class DemandeDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> ret = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY activite");
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY activite ASC");
+            ret = (List<Demande>) q.getResultList();
+        }
+        catch(Exception e) {
+            throw e;
+        }
+        return ret;
+    }
+
+    public List<Demande> findAllOrderByActiviteDesc() throws Throwable {
+        EntityManager em = JpaUtil.obtenirEntityManager();
+        List<Demande> ret = null;
+        try {
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY activite DESC");
             ret = (List<Demande>) q.getResultList();
         }
         catch(Exception e) {
