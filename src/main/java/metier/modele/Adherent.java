@@ -82,6 +82,8 @@ public class Adherent implements Serializable {
 
     @Override
     public String toString() {
-        return "Adherent{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", adresse=" + adresse + ", longitude=" + longitude + ", latitude=" + latitude + '}';
+        return "Adherent{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom 
+                + ", mail=" + mail + ", adresse=" + adresse + ", longitude=" + 
+                longitude + ", latitude=" + latitude + '}';
     }
 }

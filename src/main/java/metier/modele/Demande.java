@@ -82,7 +82,9 @@ public class Demande implements Serializable {
 
     @Override
     public String toString() {
-        return "Demande{" + "id=" + id + ", Demandeur=" + demandeur +  ", Activite=" + activite + ", DateDemande=" + dateDemande + ", DateEvenement=" + dateEvenement + '}';
+        return "Demande{" + "id=" + id + ", Demandeur=" + demandeur +  
+                ", Activite=" + activite.getDenomination() + ", DateDemande=" + 
+                dateDemande + ", DateEvenement=" + dateEvenement + '}';
     }
        
 }

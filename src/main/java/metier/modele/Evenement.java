@@ -64,6 +64,8 @@ public abstract class Evenement implements Serializable {
     
      @Override
     public String toString() {
-        return "Evenement{" + "id=" + id +  ", Activite=" + activite + ", DateEvenement=" + dateEvenement + '}';
+        return "Evenement{" + "id=" + id +  ", Activite=" + 
+                activite.getDenomination() + ", DateEvenement=" + dateEvenement 
+                + '}';
     }
 }

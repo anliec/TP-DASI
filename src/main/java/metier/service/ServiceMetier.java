@@ -29,7 +29,8 @@ public class ServiceMetier {
     
     /**
      * Methode permettant d'ajouter un adherent a la base, seulement si celui-ci
-     * identife par son adresse mail n'existe pas deja dans la base de donne
+     * identife par son adresse mail n'existe pas deja dans la base de donne, gere
+     * aussi l'envoi des mails d'infirmation ou de confirmation d'inscription
      * @param adherent l'adherent a ajouter
      * @return 1 si l'adherent a ete correctement ajoute 0 sinon
      */
@@ -480,7 +481,7 @@ public class ServiceMetier {
     }
 
     /**
-     * Affecte un lieu a un evenement
+     * Affecte un lieu a un evenement et envoye le mail correspondant
      * @param lieu le lieu a affecter
      * @param evenement l'evenement en question
      */
@@ -502,6 +503,8 @@ public class ServiceMetier {
             }
 
             JpaUtil.fermerEntityManager();
+            
+            ServiceTechnique.mailEvenement(evenement);
 
         } catch (Exception e) {
 
@@ -532,20 +535,5 @@ public class ServiceMetier {
         return ret;
     }
 
-    /**
-     * Methode renvoyant tous les adherent a un evenement donne
-     * @param evenement l'enevenement en question
-     * @return la liste de tous les adherents
-     */
-    public List<Adherent> obtenirAdherentAEvenement(Evenement evenement) {
 
-        if(evenement instanceof Evenement1equipe) {
-
-            return ((Evenement1equipe) evenement).getListeAdherents();
-        }
-
-        List<Adherent> ret = ((Evenement2equipes) evenement).getListeEquipeA();
-        ret.addAll(((Evenement2equipes) evenement).getListeEquipeA());
-        return ret;
-    }
 }
