@@ -5,19 +5,12 @@
  */
 package vue;
 
-import java.util.Date;
-import java.util.LinkedList;
-import metier.modele.Adherent;
+import metier.modele.*;
 import metier.service.ServiceMetier;
-import metier.service.ServiceTechnique;
-import metier.modele.Activite;
-import metier.modele.Demande;
-import metier.modele.Evenement;
-import metier.modele.Evenement1equipe;
-import metier.modele.Evenement2equipes;
-import metier.modele.Lieu;
-import java.util.Scanner;
+
+import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -115,7 +108,7 @@ public class Main {
     public static void listerActivites(){
         System.out.println();
         System.out.println("liste des activitee:");
-        List<Activite> activiteList = serviceMetier.afficherActivitees();
+        List<Activite> activiteList = serviceMetier.obtenirActivitees();
         int i=0;
         for (Activite a:activiteList) {
             System.out.println((i++)+": "+a);
@@ -147,7 +140,7 @@ public class Main {
         System.out.print("Voulez vous une liste des evenements sans lieu ? [O/n]:");
         String r = sc.next();
         System.out.println();
-        if(!r.equals('n') && !r.equals('N')){
+        if(!r.equals("n") && !r.equals("N")){
             List<Evenement> evenementList = serviceMetier.obtenirEvenementSansLieu();
             int i=0;
             for(Evenement e:evenementList){
@@ -162,36 +155,73 @@ public class Main {
             event = serviceMetier.trouverEvenement(eventId);
         }while(event==null);
         //TODO finir liste lieux
-        /*System.out.print("Voulez vous une liste des lieux ? [O/n]:");
+        System.out.print("Voulez vous une liste des lieux ? [O/n]:");
         r = sc.next();
-        if(!r.equals('n') && !r.equals('N')){
-            List<Lieu> lieuList = serviceMetier.;
+        if(!r.equals("n") && !r.equals("N")){
+            List<Lieu> lieuList = serviceMetier.obtenirLieux();
             int i=0;
             for(Lieu l:lieuList){
                 System.out.println((i++)+": "+l);
             }
             System.out.println();
-        }*/
+        }
         Lieu lieu;
-        //TODO ajouter getter lieuevent
-        /*do{
+        do{
             System.out.println("A quel lieu voullez vous affecter cet evenement ? [id]");
             long lieuId = sc.nextLong();
             lieu = serviceMetier.trouverLieu(lieuId);
-        }while(lieu==null);*/
+        }while(lieu==null);
         serviceMetier.affecterLieuAEvenement(lieu,event);
         System.out.println();
     }
 
     public static void creerAdherent(){
-
+        System.out.println();
+        System.out.println("creation d'un nouvel adherent:");
+        System.out.print("adresse mail: ");
+        String mail = sc.next();
+        System.out.println("[les autres paramettres sont en dure dans le code]");
+        Adherent a = new Adherent("Edouard","Dupont","42 rue des oies 00 000 Quelquepart",mail);
+        if(serviceMetier.creerAdherent(a)==1){
+            System.out.print("[OK]");
+        }
+        else{
+            System.out.println("[ERR]");
+        }
+        System.out.println();
     }
 
     public static void creerDemande(){
-
+        System.out.println();
+        Adherent a;
+        do{
+            System.out.print("Quel adherent creer la demande ? [mail]: ");
+            String mail = sc.next();
+            a = serviceMetier.trouverAdherent(mail);
+        }while (a==null);
+        System.out.println("[les autres paramettres sont en dure dans le code]");
+        Activite act = serviceMetier.obtenirActivitees().get(0);
+        Demande demande = new Demande(new Date(), new Date(), a,act);
+        serviceMetier.creerDemande(demande);
+        System.out.println();
     }
 
     public static void creerActivite(){
-
+        System.out.println();
+        System.out.println("Creation d'une nouvelle activite:");
+        System.out.print("Quel est le nom de cette activite ?: ");
+        String nom = sc.next();
+        System.out.println();
+        System.out.print("Est-ce une activite par equipe ? [O/n]: ");
+        String r = sc.next();
+        boolean equipe = false;
+        if(!r.equals("n") && !r.equals("N")){
+            equipe = true;
+        }
+        System.out.println();
+        System.out.print("Combien y a t'il de participant ?: ");
+        int nbrParticipant = sc.nextInt();
+        System.out.println();
+        serviceMetier.creerActivite(new Activite(nom,equipe,nbrParticipant));
     }
 }

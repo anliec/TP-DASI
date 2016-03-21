@@ -194,6 +194,27 @@ public class ServiceMetier {
         return ret;
     }
 
+    public Lieu trouverLieu(long id){
+        Lieu ret=null;
+        try {
+            JpaUtil.creerEntityManager();
+            try {
+                JpaUtil.ouvrirTransaction();
+                ret = lieuDao.findById(id);
+                JpaUtil.validerTransaction();
+
+            } catch (Throwable ex) {
+                JpaUtil.annulerTransaction();
+                Logger.getLogger(ServiceMetier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JpaUtil.fermerEntityManager();
+        } catch (Exception e) {
+            System.err.println("entiyManager creation error");
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
     public Adherent trouverAdherent(String mail){
         Adherent ret=null;
         try {
