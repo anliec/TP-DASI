@@ -23,9 +23,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("=========================================================");
-        System.out.println("===  Bienvenue dans la méthode de test de Collect'IF  ===");
-        System.out.println("=========================================================");
+        System.out.println("==========================================================");
+        System.out.println("===  Bienvenue dans l'interface de test de Collect'IF  ===");
+        System.out.println("==========================================================");
         System.out.println();
         System.out.println();
 
