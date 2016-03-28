@@ -27,38 +27,101 @@
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=10cm]{../modèle.png}
+    \includegraphics[width=15cm]{../modèle.png}
     \caption{Modèle du domaine}
   \end{center}
 \end{figure}
 
+\pagebreak
 \section{Maquette des IHMs}
 
-\subsection{IHM utilisateur}
+\subsection{IHM Utilisateur}
 
 \subsubsection{Schema générale}
 
-\begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=14cm]{../../IHM/graphique_IHM.png}
-    \caption{Modèle du domaine}
-  \end{center}
-\end{figure}
+\paragraph{}
+L'interface utilisateur est composé de deux vues distinctes: une vues de connexion et une d'utilisation. La première est décliné en quatre variente différente en fonction des informations à afficher sur la page.
 
-\subsubsection{IHM de connection du client}
+Les différents liens entre ces interfaces graphiques sont explicitée sur la Figure~\ref{IHMs} qui représente les différent cas d'utilisation de la vu de connexion. Il est important de préciser que même avec l'affichage d'un message d'erreur ou de confirmation la vu de connexion est toujours utilisable et se comporte comme une vue de connexion normale. De plus comme il le sera expliqué plus tard il est possible de revenir à la vu de connexion une fois sur la vu d'utilisation en utilisant le bouton "déconexion".
 
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=12cm]{../../IHM/IHM connection utilisateur.png}
-    \caption{Modèle du domaine}
+    \includegraphics[width=15cm]{../../IHM/graphique_IHM.png}
+    \caption{Mises en relation des IHMs}
+    \label{IHMs}
+  \end{center}
+\end{figure}
+\pagebreak
+\subsubsection{IHM de connexion du client}
+
+\paragraph{}
+Cette IHM permet à l'Utilisateur de se connecter à COllect'IF par simple saisie de sont adresse mail dans le menu de conection de la colonne de droite ou dans le cas où celui-ci ne posède pas encore de compte de s'en crée un graçe au menu d'inscription de la colonne de gauche.
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=15cm]{../../IHM/IHM_connection_utilisateur.png}
+    \caption{IHM de connexion du client}
   \end{center}
 \end{figure}
 
+\paragraph{}
+Comme expliquer plus haut et ilustrer dans la Figure~\ref{IHMs}, en fontion de l'action éffectué ainsi que des données saisie différents messages de confirmation ou d'erreur peuvent être affiché. Des illustration de ces différent mesages vous sont proposé ci desous.
 
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=15cm]{../../IHM/IHM_connection_utilisateur_erreur_co_z.png}
+    \caption{IHM erreur de connexion du client}
+  \end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=15cm]{../../IHM/IHM_connection_utilisateur_conf_ins_z.png}
+    \caption{IHM confirmation d'inscription}
+  \end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=15cm]{../../IHM/IHM_connection_utilisateur_erreur_ins_z.png}
+    \caption{IHM erreur d'inscription}
+  \end{center}
+\end{figure}
+
+\pagebreak
+\subsubsection{IHM utilisateur connecté}
+
+\paragraph{}
+L'IHM de l'utilisateur est décomposé en deux colonnes. La première sert à créer une nouvelle demande d'évènement. Affin de l'aider dans cette tâche l'utilisateur à accès à une liste des activitées possibles dans laquel il peut trouver facilement ce qu'il recherche en entrant la première lettre du nom de l'activiée qu'il souhaite. De plus graçe à une vue de type calendrier il peut choisir le jour où il voudrait évectuer cette activitée.
+
+La segonde colonne affiche l'historique des demandes de l'utilisateur comprenant la date de demande, le type d'activitée demandé ainsi que la date choisie pour l'évènement, trier par date de demande.
+
+Un boutons de déconnexion est aussi proposé à l'utilisateur, ce lien lui permet de cloturer sa séssion et de revenir simplement sur la page de connexion.
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=15cm]{../../IHM/IHM_utilisateur.png}
+    \caption{IHM utilisateur connecté}
+  \end{center}
+\end{figure}
+
+\pagebreak
+\subsection{IHM Administrateur}
+
+\paragraph{}
+L'IHM du responsable est composer de deux colonnes pricipales dont la première est remplie par une liste des évènements affichant la date et le type d'activitée concerné. La segonde colonne est quant à elle desiné à afficher les détail de l'évènement, sélectionner dans la liste de la première colonne, au respossable affin de l'aider dans sont choix. Cette vue est ainsi composé d'un rapelle de la date et de l'activitée concernée ainsi que d'une carte affichant les positions géographique des logement des différents demandeur pour l'évènement. Cette carte affiche de plus les différents lieux qui peuvent être affecté pour l'évènement. Le lieu peut à affecter à l'évènement peut ensuite être choisi soit en selectionnant directement sur la carte ou bien en utilisant le menu déroulant endesous, ce menu étant équiper d'un fonction de recherche permétant d'accéder rapidment à un lieu connu par le responsable.
+
+L'IHM du responsable n'étant accesible que depuis un lieu particulier il n'est pas nécésaire d'avoir une interface de connexion et déconnexion.
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=15cm]{../../IHM/IHM_responsable.png}
+    \caption{IHM Administrateur}
+  \end{center}
+\end{figure}
 
 
 
 \end{document}
-
 
 
