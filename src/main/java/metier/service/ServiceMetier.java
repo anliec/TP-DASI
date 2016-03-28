@@ -135,8 +135,8 @@ public class ServiceMetier {
     }
 
     /**
-     * Ajoute à la base de donnée une demande
-     * @param demande la demande ajouté à la base de donnée
+     * Ajoute a la base de donnee une demande
+     * @param demande la demande ajoute a la base de donnee
      */
     public void creerDemande(Demande demande) {
         
@@ -163,8 +163,8 @@ public class ServiceMetier {
     }
 
     /**
-     * Ajoute à la base de donnée un evenement
-     * @param evenement la demande ajouté à la base de donnée
+     * Ajoute a la base de donnee un evenement
+     * @param evenement la demande ajoute a la base de donnee
      */
     public void creerEvenement(Evenement evenement) {
         
@@ -192,9 +192,9 @@ public class ServiceMetier {
 
 
     /**
-     * Renvoie l'evenemnt corespondant à l'ID fournie
-     * @param id le numero de l'evenement demandé
-     * @return l'evenemnt corespondant à l'ID fournie
+     * Renvoie l'evenemnt corespondant a l'ID fournie
+     * @param id le numero de l'evenement demande
+     * @return l'evenemnt corespondant a l'ID fournie
      */
     public Evenement trouverEvenement(long id){
         Evenement ret=null;
@@ -218,9 +218,9 @@ public class ServiceMetier {
     }
 
     /**
-     * Renvoie le lieu corespondant à l'ID fournie
-     * @param id le numero du lieu demandé
-     * @return le lieu corespondant à l'ID fournie
+     * Renvoie le lieu corespondant a l'ID fournie
+     * @param id le numero du lieu demande
+     * @return le lieu corespondant a l'ID fournie
      */
     public Lieu trouverLieu(long id){
         Lieu ret=null;
@@ -244,9 +244,9 @@ public class ServiceMetier {
     }
 
     /**
-     * Renvoie l'adhérent corespondant au mail fournie
-     * @param mail mail de l'adhérent demandé
-     * @return l'adhérent corespondant au mail fournie
+     * Renvoie l'adherent corespondant au mail fournie
+     * @param mail mail de l'adherent demande
+     * @return l'adherent corespondant au mail fournie
      */
     public Adherent trouverAdherent(String mail){
         Adherent ret=null;
@@ -270,9 +270,9 @@ public class ServiceMetier {
     }
 
     /**
-     * Renvoie l'adhérent corespondant à l'ID fournie
-     * @param id le numero de l'adhérent demandé
-     * @return l'adhérent corespondant à l'ID fournie
+     * Renvoie l'adherent corespondant a l'ID fournie
+     * @param id le numero de l'adherent demande
+     * @return l'adherent corespondant a l'ID fournie
      */
     public Adherent trouverAdherent(long id){
         Adherent ret=null;
@@ -296,9 +296,9 @@ public class ServiceMetier {
     }
 
     /**
-     * Renvoie l'activité corespondant au nom fournie
-     * @param nom le nom de l'adhérent demandé
-     * @return l'activité corespondant au nom fournie
+     * Renvoie l'activite corespondant au nom fournie
+     * @param nom le nom de l'adherent demande
+     * @return l'activite corespondant au nom fournie
      */
     public Activite trouverActivite(String nom)
     {
@@ -323,7 +323,8 @@ public class ServiceMetier {
     }
 
     /**
-     * @return la liste complète des activitees presante dans la base de donnee
+     * Renvoie la liste complete des activitees presante dans la base de donnee
+     * @return la liste complete des activitees presante dans la base de donnee
      */
     public List<Activite> obtenirActivitees()
     {
@@ -348,8 +349,9 @@ public class ServiceMetier {
     }
 
     /**
-     * @param adherent l'adhérent conserne par la domande
-     * @return liste des demandes de l'adherent donnée en parametre, trier par ordre de date croisante
+     * Renvoie la liste des demandes de l'adherent donnee en parametre, trier par ordre de date croisante
+     * @param adherent l'adherent conserne par la domande
+     * @return la liste des demandes de l'adherent donnee en parametre, trier par ordre de date croisante
      */
     public List<Demande> obtenirDemandesTrierParDatePourAdherent(Adherent adherent)
     {
@@ -374,8 +376,9 @@ public class ServiceMetier {
     }
 
     /**
-     * @param adherent l'adhérent conserne par la domande
-     * @return liste des demandes de l'adherent donnée en parametre, trier par ordre de date decroisante
+     * Renvoie la liste des demandes de l'adherent donnee en parametre, trier par ordre de date decroisante
+     * @param adherent l'adherent conserne par la domande
+     * @return la liste des demandes de l'adherent donnee en parametre, trier par ordre de date decroisante
      */
     public List<Demande> afficherDemandesTrierParDateDescPourAdherent(Adherent adherent)
     {
@@ -400,7 +403,8 @@ public class ServiceMetier {
     }
 
     /**
-     * @return liste des demandes contenue dans la base de donnee, trier par nom d'activitee croissant
+     * Renvoie la liste des demandes contenue dans la base de donnee, trier par nom d'activitee croissant
+     * @return la liste des demandes contenue dans la base de donnee, trier par nom d'activitee croissant
      */
     public List<Demande> obtenirDemandesTrierParActivitee()
     {
@@ -425,7 +429,8 @@ public class ServiceMetier {
     }
 
     /**
-     * @return liste des demandes contenue dans la base de donnee, trier par nom d'activitee decroissant
+     * Renvoie la liste des demandes contenue dans la base de donnee, trier par nom d'activitee decroissant
+     * @return la liste des demandes contenue dans la base de donnee, trier par nom d'activitee decroissant
      */
     public List<Demande> afficherDemandesTrierParActiviteeDesc()
     {
@@ -450,8 +455,8 @@ public class ServiceMetier {
     }
 
     /**
-     * Methode renvoye une liste de tous les evenements affectés à aucun lieu
-     * @return la liste decrtie ci-dessus
+     * Methode renvoye une liste de tous les evenements affectes a aucun lieu
+     * @return liste de tous les evenements affectes a aucun lieu
      */
     public List<Evenement> obtenirEvenementSansLieu() {
         
@@ -481,6 +486,7 @@ public class ServiceMetier {
     }
 
     /**
+     * Renvoie l'evenement creer si la creation a eu lieu, null sinon
      * @param activite activitee a chercher
      * @param date date de l'activitee
      * @return l'evenement creer si la creation a eu lieu, null sinon
@@ -496,7 +502,7 @@ public class ServiceMetier {
                 if(activite.getNbParticipants() <= demandes.size() ) {
                     LinkedList<Adherent> equipeA = new LinkedList<>();
                     LinkedList<Adherent> equipeB = new LinkedList<>();
-                    //répartie les demendeurs dans les équipes (si plusieurs équipes)
+                    //repartie les demendeurs dans les equipes (si plusieurs equipes)
                     for(Demande d:demandes) {
                         Adherent a=d.getDemandeur();
                         if(equipeA.size() <= equipeB.size() || !activite.isParEquipe()) {
@@ -565,7 +571,8 @@ public class ServiceMetier {
     }
 
     /**
-     * @return liste des Lieux contenue dans la base de donnee
+     * Renvoie la liste des Lieux contenue dans la base de donnee
+     * @return la liste des Lieux contenue dans la base de donnee
      */
     public List<Lieu> obtenirLieux() {
 

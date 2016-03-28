@@ -23,9 +23,9 @@ public abstract class ServiceTechnique {
             new GeoApiContext().setApiKey("AIzaSyAhf3JleYpal9S-xouJYH8lf7Dvz5Y2Nko");
    
     /**
-     * Methode de récupération de 
-     * @param adresse
-     * @return 
+     * Methode de recuperation de la latitude et longitude
+     * @param adresse a localiser
+     * @return latitude et longitude
      */
     private static LatLng getLatLng(String adresse) {
        
@@ -41,18 +41,26 @@ public abstract class ServiceTechnique {
         }
     }
    
+    /**
+     * Methode de mise a jour de la latitude et longitude d'un Lieu
+     * @param lieu a localiser puis mettre a jour
+     */
     public static void majCoordonnees(Lieu lieu) {
        
         lieu.setCoordonnees(getLatLng(lieu.getAdresse()));
     }
    
+    /**
+     * Methode de mise a jour de la latitude et longitude d'un Adherent	
+     * @param adherent a localiser puis mettre a jour
+     */
     public static void majCoordonnees(Adherent adherent) {
        
         adherent.setCoordonnees(getLatLng(adherent.getAdresse()));
     }
    
     /**
-     * Affiche sur la console le mail que l'adherent reçoit en cas de
+     * Affiche sur la console le mail que l'adherent recoit en cas de
      * confirmation de son inscription
      * @param adherent l'adherent en question
      */
@@ -69,7 +77,7 @@ public abstract class ServiceTechnique {
     }
    
     /**
-     * Affiche sur la console le mail que le responsable reçoit en cas de
+     * Affiche sur la console le mail que le responsable recoit en cas de
      * confirmation de l'inscription d'un adherent passe en parametre
      * @param adherent l'adherent dont l'inscription a ete confirmee   
      */
@@ -87,7 +95,7 @@ public abstract class ServiceTechnique {
     }
    
     /**
-     * Affiche sur la console le mail que l'adherent reçoit en cas d'infirmation
+     * Affiche sur la console le mail que l'adherent recoit en cas d'infirmation
      * de son inscription
      * @param adherent l'adherent en question
      */
@@ -104,8 +112,8 @@ public abstract class ServiceTechnique {
     }
    
     /**
-     * Affiche sur la console le mail que le responsable reçoit en cas 
-     * d'inrmationde l'inscription d'un adherent passe en parametre
+     * Affiche sur la console le mail que le responsable recoit en cas 
+     * d'infirmation de l'inscription d'un adherent passe en parametre
      * @param adherent l'adherent dont l'inscription a ete infirmee
      */
     public static void mailInfirmationInscriptionResponsable(Adherent adherent) {
@@ -120,7 +128,11 @@ public abstract class ServiceTechnique {
                 + "l'adherent : "+ adherent.getPrenom() +" "+ adherent.getNom()
                 + "a l'adresse mail : " + adherent.getMail() + " a echoue.\n\n");
     }
-   
+    /**
+     * Affiche sur la console le mail que le responsable envoie en cas 
+     * de creation d'un evenement passe en parametre
+     * @param evenement l'evenement venant d'etre cree
+     */
     public static void mailEvenement(Evenement evenement) {
        
         System.out.print( "Expediteur : collectif@collectif.org\n"

@@ -6,6 +6,7 @@
 \usepackage[francais]{babel}
 \usepackage{authblk}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{array}
 \usepackage{listings}
 \usepackage{color}
@@ -31,6 +32,61 @@
     \caption{Modèle du domaine}
   \end{center}
 \end{figure}
+
+\section{Description des services}
+
+\paragraph{}
+Affin d'assurer le bon fonctionnement de l'aplication nous avons dénombrer un certain nombre de services nécésaire à l'aplication. Ces services sont rassembler ci-desous sous forme d'un tableau reprenant les éléments présent dans la JavaDoc.
+
+\newcolumntype{P}[1]{>{\raggedright}p{#1}}
+
+\begin{table}[H]
+  \begin{center}
+    \caption{ServicesMetier.java}
+    \label{tab:ServicesMetier}
+    \begin{longtable}{|P{7cm}|p{7cm}|}
+      \hline
+       void affecterLieuAEvenement(Lieu lieu, Evenement evenement) & Affecte un lieu a un evenement et envoye le mail correspondant \\ \hline
+       List<Demande> afficherDemandesTrierParActiviteeDesc() & Renvoie la liste des demandes contenue dans la base de donnee, trier par nom d'activitee decroissant  \\ \hline
+       List<Demande> afficherDemandesTrierParDateDescPourAdherent(Adherent adherent) & Renvoie la liste des demandes de l'adherent donnee en parametre, trier par ordre de date decroisante  \\ \hline
+       void creerActivite(Activite activite) & Methode permettant d'ajouter une activite a la base  \\ \hline
+       int creerAdherent(Adherent adherent) & Methode permettant d'ajouter un adherent a la base, seulement si celui-ci identife par son adresse mail n'existe pas deja dans la base de donne, gere aussi l'envoi des mails d'infirmation ou de confirmation d'inscription  \\ \hline
+       void creerDemande(Demande demande) & Ajoute a la base de donnee une demande  \\ \hline
+       void creerEvenement(Evenement evenement) & Ajoute a la base de donnee un evenement  \\ \hline
+       void creerLieu(Lieu lieu) & Methode permettant d'ajouter un lieu a la base  \\ \hline
+       List<Activite> obtenirActivitees() & Renvoie la liste complete des activitees presante dans la base de donnee  \\ \hline
+       List<Demande> obtenirDemandesTrierParActivitee() & Renvoie la liste des demandes contenue dans la base de donnee, trier par nom d'activitee croissant  \\ \hline
+       List<Demande> obtenirDemandesTrierParDatePourAdherent(Adherent adherent) & Renvoie la liste des demandes de l'adherent donnee en parametre, trier par ordre de date croisante  \\ \hline
+       List<Evenement> obtenirEvenementSansLieu() & Methode renvoye une liste de tous les evenements affectes a aucun lieu  \\ \hline
+       List<Lieu> obtenirLieux() & Renvoie la liste des Lieux contenue dans la base de donnee  \\ \hline
+       Evenement rechercherEtCreerEvenement(Activite activite, java.util.Date date) & Renvoie l'evenement creer si la creation a eu lieu, null sinon  \\ \hline
+       Activite trouverActivite(java.lang.String nom) & Renvoie l'activite corespondant au nom fournie  \\ \hline
+       Adherent trouverAdherent(long id) & Renvoie l'adherent corespondant a l'ID fournie  \\ \hline
+       Adherent trouverAdherent(java.lang.String mail) & Renvoie l'adherent corespondant au mail fournie  \\ \hline
+       Evenement trouverEvenement(long id) & Renvoie l'evenemnt corespondant a l'ID fournie  \\ \hline
+       Lieu trouverLieu(long id) & Renvoie le lieu corespondant a l'ID fournie \\ \hline
+    \end{longtable}
+  \end{center}
+\end{table}
+
+\begin{table}[H]
+  \caption{ServiceTechnique.java}
+  \label{tab:ServiceTechnique}
+
+  \begin{center}
+    \begin{tabular}{|P{7cm}|p{7cm}|}
+    \hline
+       static void mailConfirmationInscriptionAdherent(Adherent adherent) & Affiche sur la console le mail que l'adherent reÃ§oit en cas de confirmation de son inscription \\ \hline
+       static void mailConfirmationInscriptionResponsable(Adherent adherent) & Affiche sur la console le mail que le responsable recoit en cas de confirmation de l'inscription d'un adherent passe en parametre \\ \hline
+       static void mailEvenement(Evenement evenement) & Affiche sur la console le mail que le responsable envoie en cas de creation d'un evenement passe en parametre \\ \hline
+static void mailInfirmationInscriptionAdherent(Adherent adherent) & Affiche sur la console le mail que l'adherent recoit en cas d'infirmation de son inscription \\ \hline
+static void mailInfirmationInscriptionResponsable(Adherent adherent) & Affiche sur la console le mail que le responsable recoit en cas d'infirmation de l'inscription d'un adherent passe en parametre \\ \hline
+static void majCoordonnees(Adherent adherent) & Methode de mise a jour de la latitude et longitude d'un Adherent \\ \hline
+static void majCoordonnees(Lieu lieu) & Methode de mise a jour de la latitude et longitude d'un Lieu \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
 
 \pagebreak
 \section{Maquette des IHMs}
@@ -123,5 +179,4 @@ L'IHM du responsable n'étant accesible que depuis un lieu particulier il n'est 
 
 
 \end{document}
-
 
