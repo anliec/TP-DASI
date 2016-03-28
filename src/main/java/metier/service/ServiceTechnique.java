@@ -9,12 +9,9 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
+import metier.modele.*;
+
 import java.util.List;
-import metier.modele.Adherent;
-import metier.modele.Evenement;
-import metier.modele.Evenement1equipe;
-import metier.modele.Evenement2equipes;
-import metier.modele.Lieu;
 
 /**
  *

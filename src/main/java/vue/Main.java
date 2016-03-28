@@ -184,7 +184,7 @@ public class Main {
         System.out.print("adresse mail: ");
         String mail = sc.next();
         System.out.println("[les autres paramettres sont en dure dans le code]");
-        Adherent a = new Adherent("Edouard","Dupont","42 rue des oies 00 000 Quelquepart",mail);
+        Adherent a = new Adherent("Edouard","Dupont","20 avenue albert Einstein 69100 Villeurbanne France",mail);
         if(serviceMetier.creerAdherent(a)==1){
             System.out.print("[OK]");
         }

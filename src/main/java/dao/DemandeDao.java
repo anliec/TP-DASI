@@ -84,7 +84,7 @@ public class DemandeDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> demande = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY dateEvenement ASC");
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY a.dateEvenement ASC");
             demande = (List<Demande>) q.getResultList();
         }
         catch(Exception e) {
@@ -105,7 +105,7 @@ public class DemandeDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> demande = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY dateEvenement DESC");
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY a.dateEvenement DESC");
             demande = (List<Demande>) q.getResultList();
         }
         catch(Exception e) {
@@ -126,7 +126,7 @@ public class DemandeDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> ret = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY activite ASC");
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY a.activite.denomination ASC");
             ret = (List<Demande>) q.getResultList();
         }
         catch(Exception e) {
@@ -139,7 +139,7 @@ public class DemandeDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> ret = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY activite DESC");
+            Query q = em.createQuery("SELECT a FROM Demande a ORDER BY a.activite.denomination DESC");
             ret = (List<Demande>) q.getResultList();
         }
         catch(Exception e) {

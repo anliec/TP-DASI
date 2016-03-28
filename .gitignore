@@ -14,3 +14,15 @@ hs_err_pid*
 
 #temp files
 *~
+.dat
+
+#Database
+db/*
+Database/*
+
+#latex
+*.log
+*.fls
+*.aux
+*.toc
+*.fdb_latexmk
