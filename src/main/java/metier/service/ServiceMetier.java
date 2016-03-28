@@ -133,7 +133,11 @@ public class ServiceMetier {
             e.printStackTrace();
         }
     }
-    
+
+    /**
+     * Ajoute à la base de donnée une demande
+     * @param demande la demande ajouté à la base de donnée
+     */
     public void creerDemande(Demande demande) {
         
         try {
@@ -157,7 +161,11 @@ public class ServiceMetier {
             e.printStackTrace();
         }
     }
-    
+
+    /**
+     * Ajoute à la base de donnée un evenement
+     * @param evenement la demande ajouté à la base de donnée
+     */
     public void creerEvenement(Evenement evenement) {
         
         try {
@@ -182,6 +190,12 @@ public class ServiceMetier {
         }
     }
 
+
+    /**
+     * Renvoie l'evenemnt corespondant à l'ID fournie
+     * @param id le numero de l'evenement demandé
+     * @return l'evenemnt corespondant à l'ID fournie
+     */
     public Evenement trouverEvenement(long id){
         Evenement ret=null;
         try {
@@ -203,6 +217,11 @@ public class ServiceMetier {
         return ret;
     }
 
+    /**
+     * Renvoie le lieu corespondant à l'ID fournie
+     * @param id le numero du lieu demandé
+     * @return le lieu corespondant à l'ID fournie
+     */
     public Lieu trouverLieu(long id){
         Lieu ret=null;
         try {
@@ -224,6 +243,11 @@ public class ServiceMetier {
         return ret;
     }
 
+    /**
+     * Renvoie l'adhérent corespondant au mail fournie
+     * @param mail mail de l'adhérent demandé
+     * @return l'adhérent corespondant au mail fournie
+     */
     public Adherent trouverAdherent(String mail){
         Adherent ret=null;
         try {
@@ -245,6 +269,11 @@ public class ServiceMetier {
         return ret;
     }
 
+    /**
+     * Renvoie l'adhérent corespondant à l'ID fournie
+     * @param id le numero de l'adhérent demandé
+     * @return l'adhérent corespondant à l'ID fournie
+     */
     public Adherent trouverAdherent(long id){
         Adherent ret=null;
         try {
@@ -266,14 +295,19 @@ public class ServiceMetier {
         return ret;
     }
 
-    public Activite trouverActivite(String name)
+    /**
+     * Renvoie l'activité corespondant au nom fournie
+     * @param nom le nom de l'adhérent demandé
+     * @return l'activité corespondant au nom fournie
+     */
+    public Activite trouverActivite(String nom)
     {
         Activite ret=null;
         try {
             JpaUtil.creerEntityManager();
             try {
                 JpaUtil.ouvrirTransaction();
-                ret = activiteDao.findByName(name);
+                ret = activiteDao.findByName(nom);
                 JpaUtil.validerTransaction();
 
             } catch (Throwable ex) {
@@ -288,6 +322,9 @@ public class ServiceMetier {
         return ret;
     }
 
+    /**
+     * @return la liste complète des activitees presante dans la base de donnee
+     */
     public List<Activite> obtenirActivitees()
     {
         List<Activite> ret =null;
@@ -310,6 +347,10 @@ public class ServiceMetier {
         return ret;
     }
 
+    /**
+     * @param adherent l'adhérent conserne par la domande
+     * @return liste des demandes de l'adherent donnée en parametre, trier par ordre de date croisante
+     */
     public List<Demande> obtenirDemandesTrierParDatePourAdherent(Adherent adherent)
     {
         List<Demande> ret =null;
@@ -332,6 +373,10 @@ public class ServiceMetier {
         return ret;
     }
 
+    /**
+     * @param adherent l'adhérent conserne par la domande
+     * @return liste des demandes de l'adherent donnée en parametre, trier par ordre de date decroisante
+     */
     public List<Demande> afficherDemandesTrierParDateDescPourAdherent(Adherent adherent)
     {
         List<Demande> ret =null;
@@ -354,6 +399,9 @@ public class ServiceMetier {
         return ret;
     }
 
+    /**
+     * @return liste des demandes contenue dans la base de donnee, trier par nom d'activitee croissant
+     */
     public List<Demande> obtenirDemandesTrierParActivitee()
     {
         List<Demande> ret =null;
@@ -376,6 +424,9 @@ public class ServiceMetier {
         return ret;
     }
 
+    /**
+     * @return liste des demandes contenue dans la base de donnee, trier par nom d'activitee decroissant
+     */
     public List<Demande> afficherDemandesTrierParActiviteeDesc()
     {
         List<Demande> ret =null;
@@ -513,6 +564,9 @@ public class ServiceMetier {
         }
     }
 
+    /**
+     * @return liste des Lieux contenue dans la base de donnee
+     */
     public List<Lieu> obtenirLieux() {
 
         List<Lieu> ret =null;
