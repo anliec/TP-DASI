@@ -1,5 +1,5 @@
 \documentclass[a4paper,11pt]{article}
-\usepackage{geometry}
+\usepackage[top=3cm, bottom=3cm, left=3cm , right=3cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -62,7 +62,7 @@ Affin d'assurer le bon fonctionnement de l'aplication nous avons dénombrer un c
        Evenement rechercherEtCreerEvenement(Activite activite, java.util.Date date) & Renvoie l'evenement creer si la creation a eu lieu, null sinon  \\ \hline
        Activite trouverActivite(java.lang.String nom) & Renvoie l'activite corespondant au nom fournie  \\ \hline
        Adherent trouverAdherent(long id) & Renvoie l'adherent corespondant a l'ID fournie  \\ \hline
-       Adherent trouverAdherent(java.lang.String mail) & Renvoie l'adherent corespondant au mail fournie  \\ \hline
+       Adherent trouverAdherent(String mail) & Renvoie l'adherent corespondant au mail fournie  \\ \hline
        Evenement trouverEvenement(long id) & Renvoie l'evenemnt corespondant a l'ID fournie  \\ \hline
        Lieu trouverLieu(long id) & Renvoie le lieu corespondant a l'ID fournie \\ \hline
     \end{longtable}
@@ -120,6 +120,23 @@ Cette IHM permet à l'Utilisateur de se connecter à COllect'IF par simple saisi
   \end{center}
 \end{figure}
 
+\newcolumntype{M}[1]{>{\centering}m{#1}}
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|c|c|c|M{4cm}|m{4cm}|}
+       \hline
+       \textbf{Intention} & \textbf{Contrôle} & \textbf{Action} & \textbf{Réponse} & \textbf{Service }\\ 
+       \hline
+       Initialisation & - & - & - & - \\ 
+       \hline
+       Connexion & Bouton & Clic & Lien vers "IHM utilisateur" & trouverAdherent (String~mail)\\ 
+       \hline
+       Inscription & Bouton & Clic & Message sur la page courrante & creerAdherent (Adherent~adherent) \\ 
+       \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
 \paragraph{}
 Comme expliquer plus haut et ilustrer dans la Figure~\ref{IHMs}, en fontion de l'action éffectué ainsi que des données saisie différents messages de confirmation ou d'erreur peuvent être affiché. Des illustration de ces différent mesages vous sont proposé ci desous.
 
@@ -145,7 +162,7 @@ Comme expliquer plus haut et ilustrer dans la Figure~\ref{IHMs}, en fontion de l
 \end{figure}
 
 \pagebreak
-\subsubsection{IHM utilisateur connecté}
+\subsubsection{IHM utilisateur}
 
 \paragraph{}
 L'IHM de l'utilisateur est décomposé en deux colonnes. La première sert à créer une nouvelle demande d'évènement. Affin de l'aider dans cette tâche l'utilisateur à accès à une liste des activitées possibles dans laquel il peut trouver facilement ce qu'il recherche en entrant la première lettre du nom de l'activiée qu'il souhaite. De plus graçe à une vue de type calendrier il peut choisir le jour où il voudrait évectuer cette activitée.
@@ -157,9 +174,27 @@ Un boutons de déconnexion est aussi proposé à l'utilisateur, ce lien lui perm
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=15cm]{../../IHM/IHM_utilisateur.png}
-    \caption{IHM utilisateur connecté}
+    \caption{IHM utilisateur}
   \end{center}
 \end{figure}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|M{2.5cm}|c|c|M{3cm}|m{5cm}|}
+       \hline
+       \textbf{Intention} & \textbf{Contrôle} & \textbf{Action} & \textbf{Réponse} & \textbf{Service} \\ 
+       \hline
+       Initialisation & - & - & - & afficherDemandesTrierParDate DescPourAdherent (Adherent~adherent) \\ 
+       \hline
+       Initialisation & - & - & - & obtenirActivitees() \\ 
+       \hline
+       Déconnexion & Bouton & Clic & Lien vers "IHM connexion" & - \\ 
+       \hline
+       Éffectuer une demande & Bouton & Clic & - & creerDemande (Demande~demande) \\ 
+       \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 \pagebreak
 \subsection{IHM Administrateur}
@@ -176,7 +211,17 @@ L'IHM du responsable n'étant accesible que depuis un lieu particulier il n'est 
   \end{center}
 \end{figure}
 
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|m{4cm}|m{10cm}|}
+       \hline
+       \textbf{Bouton} & \textbf{Action} \\
+       \hline
+       Enregistrer lieu de l'évènement & L'évènement courrant est modifier dans la base de donnée de façons à ce que le lieu sélectionné lui soit affecté.   \\
+       \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 
 \end{document}
-
