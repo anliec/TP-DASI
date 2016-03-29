@@ -36,7 +36,7 @@
 \section{Description des services}
 
 \paragraph{}
-Affin d'assurer le bon fonctionnement de l'aplication nous avons dénombrer un certain nombre de services nécésaire à l'aplication. Ces services sont rassembler ci-desous sous forme d'un tableau reprenant les éléments présent dans la JavaDoc.
+Afin d'assurer le bon fonctionnement de l'aplication nous avons dénombré un certain nombre de services nécéssaires à l'application. Ces services sont rassemblés ci-desous sous forme d'un tableau reprenant les éléments présent dans la JavaDoc.
 
 \newcolumntype{P}[1]{>{\raggedright}p{#1}}
 
@@ -47,24 +47,24 @@ Affin d'assurer le bon fonctionnement de l'aplication nous avons dénombrer un c
     \begin{longtable}{|P{7cm}|p{7cm}|}
       \hline
        void affecterLieuAEvenement(Lieu lieu, Evenement evenement) & Affecte un lieu a un evenement et envoye le mail correspondant \\ \hline
-       List<Demande> afficherDemandesTrierParActiviteeDesc() & Renvoie la liste des demandes contenue dans la base de donnee, trier par nom d'activitee decroissant  \\ \hline
+       List<Demande> afficherDemandesTrierParActiviteeDesc() & Renvoie la liste des demandes contenues dans la base de données, triée par nom d'activitee decroissant  \\ \hline
        List<Demande> afficherDemandesTrierParDateDescPourAdherent(Adherent adherent) & Renvoie la liste des demandes de l'adherent donnee en parametre, trier par ordre de date decroisante  \\ \hline
-       void creerActivite(Activite activite) & Methode permettant d'ajouter une activite a la base  \\ \hline
-       int creerAdherent(Adherent adherent) & Methode permettant d'ajouter un adherent a la base, seulement si celui-ci identife par son adresse mail n'existe pas deja dans la base de donne, gere aussi l'envoi des mails d'infirmation ou de confirmation d'inscription  \\ \hline
-       void creerDemande(Demande demande) & Ajoute a la base de donnee une demande  \\ \hline
-       void creerEvenement(Evenement evenement) & Ajoute a la base de donnee un evenement  \\ \hline
+       void creerActivite(Activite activite) & Methode permettant d'ajouter une activité a la base  \\ \hline
+       int creerAdherent(Adherent adherent) & Methode permettant d'ajouter un adherent a la base, seulement si celui-ci identifié par son adresse mail n'existe pas déjà dans la base de données, gère aussi l'envoi des mails d'infirmation ou de confirmation d'inscription  \\ \hline
+       void creerDemande(Demande demande) & Ajoute a la base de données une demande  \\ \hline
+       void creerEvenement(Evenement evenement) & Ajoute a la base de données un evenement  \\ \hline
        void creerLieu(Lieu lieu) & Methode permettant d'ajouter un lieu a la base  \\ \hline
-       List<Activite> obtenirActivitees() & Renvoie la liste complete des activitees presante dans la base de donnee  \\ \hline
-       List<Demande> obtenirDemandesTrierParActivitee() & Renvoie la liste des demandes contenue dans la base de donnee, trier par nom d'activitee croissant  \\ \hline
-       List<Demande> obtenirDemandesTrierParDatePourAdherent(Adherent adherent) & Renvoie la liste des demandes de l'adherent donnee en parametre, trier par ordre de date croisante  \\ \hline
-       List<Evenement> obtenirEvenementSansLieu() & Methode renvoye une liste de tous les evenements affectes a aucun lieu  \\ \hline
-       List<Lieu> obtenirLieux() & Renvoie la liste des Lieux contenue dans la base de donnee  \\ \hline
-       Evenement rechercherEtCreerEvenement(Activite activite, java.util.Date date) & Renvoie l'evenement creer si la creation a eu lieu, null sinon  \\ \hline
-       Activite trouverActivite(java.lang.String nom) & Renvoie l'activite corespondant au nom fournie  \\ \hline
-       Adherent trouverAdherent(long id) & Renvoie l'adherent corespondant a l'ID fournie  \\ \hline
-       Adherent trouverAdherent(java.lang.String mail) & Renvoie l'adherent corespondant au mail fournie  \\ \hline
-       Evenement trouverEvenement(long id) & Renvoie l'evenemnt corespondant a l'ID fournie  \\ \hline
-       Lieu trouverLieu(long id) & Renvoie le lieu corespondant a l'ID fournie \\ \hline
+       List<Activite> obtenirActivitees() & Renvoie la liste complète des activités presentes dans la base de données  \\ \hline
+       List<Demande> obtenirDemandesTrierParActivitee() & Renvoie la liste des demandes contenues dans la base de données, triées par nom d'activité croissant  \\ \hline
+       List<Demande> obtenirDemandesTrierParDatePourAdherent(Adherent adherent) & Renvoie la liste des demandes de l'adhérent donné en paramètre, trié par ordre de date croissante  \\ \hline
+       List<Evenement> obtenirEvenementSansLieu() & Méthode renvoyant une liste de tous les événements affectés a aucun lieu  \\ \hline
+       List<Lieu> obtenirLieux() & Renvoie la liste des Lieux contenus dans la base de donnée  \\ \hline
+       Evenement rechercherEtCreerEvenement(Activite activite, java.util.Date date) & Renvoie l'evenement créé si la creation a eu lieu, null sinon  \\ \hline
+       Activite trouverActivite(java.lang.String nom) & Renvoie l'activité corespondant au nom fourni  \\ \hline
+       Adherent trouverAdherent(long id) & Renvoie l'adhérent corespondant a l'ID fourni  \\ \hline
+       Adherent trouverAdherent(java.lang.String mail) & Renvoie l'adhérent corespondant au mail fourni  \\ \hline
+       Evenement trouverEvenement(long id) & Renvoie l'événement corespondant a l'ID fourni  \\ \hline
+       Lieu trouverLieu(long id) & Renvoie le lieu corespondant a l'ID fourni \\ \hline
     \end{longtable}
   \end{center}
 \end{table}
@@ -76,13 +76,13 @@ Affin d'assurer le bon fonctionnement de l'aplication nous avons dénombrer un c
   \begin{center}
     \begin{tabular}{|P{7cm}|p{7cm}|}
     \hline
-       static void mailConfirmationInscriptionAdherent(Adherent adherent) & Affiche sur la console le mail que l'adherent reÃ§oit en cas de confirmation de son inscription \\ \hline
-       static void mailConfirmationInscriptionResponsable(Adherent adherent) & Affiche sur la console le mail que le responsable recoit en cas de confirmation de l'inscription d'un adherent passe en parametre \\ \hline
-       static void mailEvenement(Evenement evenement) & Affiche sur la console le mail que le responsable envoie en cas de creation d'un evenement passe en parametre \\ \hline
-static void mailInfirmationInscriptionAdherent(Adherent adherent) & Affiche sur la console le mail que l'adherent recoit en cas d'infirmation de son inscription \\ \hline
-static void mailInfirmationInscriptionResponsable(Adherent adherent) & Affiche sur la console le mail que le responsable recoit en cas d'infirmation de l'inscription d'un adherent passe en parametre \\ \hline
-static void majCoordonnees(Adherent adherent) & Methode de mise a jour de la latitude et longitude d'un Adherent \\ \hline
-static void majCoordonnees(Lieu lieu) & Methode de mise a jour de la latitude et longitude d'un Lieu \\ \hline
+       static void mailConfirmationInscriptionAdherent(Adherent adherent) & Affiche sur la console le mail que l'adhérent passé en paramètre recoit en cas de confirmation de son inscription \\ \hline
+       static void mailConfirmationInscriptionResponsable(Adherent adherent) & Affiche sur la console le mail que le responsable recoit en cas de confirmation de l'inscription d'un adherent passe en paramètre \\ \hline
+       static void mailEvenement(Evenement evenement) & Affiche sur la console le mail que le responsable envoie en cas de creation d'un evenement passe en paramètre \\ \hline
+static void mailInfirmationInscriptionAdherent(Adherent adherent) & Affiche sur la console le mail que l'adhérent passé en paramètre recoit en cas d'infirmation de son inscription \\ \hline
+static void mailInfirmationInscriptionResponsable(Adherent adherent) & Affiche sur la console le mail que le responsable recoit en cas d'infirmation de l'inscription d'un adhérent passe en paramètre \\ \hline
+static void majCoordonnees(Adherent adherent) & Méthode de mise a jour de la latitude et longitude d'un Adhérent passé en paramètre \\ \hline
+static void majCoordonnees(Lieu lieu) & Méthode de mise a jour de la latitude et longitude d'un Lieu passé en paramètre \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -93,17 +93,17 @@ static void majCoordonnees(Lieu lieu) & Methode de mise a jour de la latitude et
 
 \subsection{IHM Utilisateur}
 
-\subsubsection{Schema générale}
+\subsubsection{Schéma général}
 
 \paragraph{}
-L'interface utilisateur est composé de deux vues distinctes: une vues de connexion et une d'utilisation. La première est décliné en quatre variente différente en fonction des informations à afficher sur la page.
+L'interface utilisateur est composée de deux vues distinctes: une vue de connexion et une d'utilisation. La première est déclinée en quatre variantes différentes en fonction des informations à afficher sur la page.
 
-Les différents liens entre ces interfaces graphiques sont explicitée sur la Figure~\ref{IHMs} qui représente les différent cas d'utilisation de la vu de connexion. Il est important de préciser que même avec l'affichage d'un message d'erreur ou de confirmation la vu de connexion est toujours utilisable et se comporte comme une vue de connexion normale. De plus comme il le sera expliqué plus tard il est possible de revenir à la vu de connexion une fois sur la vu d'utilisation en utilisant le bouton "déconexion".
+Les différents liens entre ces interfaces graphiques sont explicités sur la Figure~\ref{IHMs} qui représente les différents cas d'utilisation de la vue de connexion. Il est important de préciser que même avec l'affichage d'un message d'erreur ou de confirmation, la vue de connexion est toujours utilisable et se comporte comme une vue de connexion normale. De plus comme il le sera expliqué plus tard il est possible de revenir à la vue de connexion une fois sur la vue d'utilisation en utilisant le bouton "déconnexion".
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=15cm]{../../IHM/graphique_IHM.png}
-    \caption{Mises en relation des IHMs}
+    \caption{Mise en relation des IHMs}
     \label{IHMs}
   \end{center}
 \end{figure}
@@ -111,7 +111,7 @@ Les différents liens entre ces interfaces graphiques sont explicitée sur la Fi
 \subsubsection{IHM de connexion du client}
 
 \paragraph{}
-Cette IHM permet à l'Utilisateur de se connecter à COllect'IF par simple saisie de sont adresse mail dans le menu de conection de la colonne de droite ou dans le cas où celui-ci ne posède pas encore de compte de s'en crée un graçe au menu d'inscription de la colonne de gauche.
+Cette IHM permet à l'utilisateur de se connecter à Collect'IF par simple saisie de sont adresse mail dans le menu de connection de la colonne de droite ou, dans le cas où celui-ci ne possède pas encore de compte, de s'en créer un grâce au menu d'inscription de la colonne de gauche.
 
 \begin{figure}[H]
   \begin{center}
@@ -121,7 +121,7 @@ Cette IHM permet à l'Utilisateur de se connecter à COllect'IF par simple saisi
 \end{figure}
 
 \paragraph{}
-Comme expliquer plus haut et ilustrer dans la Figure~\ref{IHMs}, en fontion de l'action éffectué ainsi que des données saisie différents messages de confirmation ou d'erreur peuvent être affiché. Des illustration de ces différent mesages vous sont proposé ci desous.
+Comme expliqué plus haut et illustré dans la Figure~\ref{IHMs}, en fontion de l'action effectuée ainsi que des données saisies, différents messages de confirmation ou d'erreur peuvent être affichés. Des illustrations de ces différents messages vous sont proposés ci-dessous.
 
 \begin{figure}[H]
   \begin{center}
@@ -148,11 +148,11 @@ Comme expliquer plus haut et ilustrer dans la Figure~\ref{IHMs}, en fontion de l
 \subsubsection{IHM utilisateur connecté}
 
 \paragraph{}
-L'IHM de l'utilisateur est décomposé en deux colonnes. La première sert à créer une nouvelle demande d'évènement. Affin de l'aider dans cette tâche l'utilisateur à accès à une liste des activitées possibles dans laquel il peut trouver facilement ce qu'il recherche en entrant la première lettre du nom de l'activiée qu'il souhaite. De plus graçe à une vue de type calendrier il peut choisir le jour où il voudrait évectuer cette activitée.
+L'IHM de l'utilisateur est décomposé en deux colonnes. La première sert à créer une nouvelle demande d'événement. Afin de l'aider dans cette tâche, l'utilisateur à accès à une liste des activités possibles dans laquelle il peut trouver facilement ce qu'il recherche en entrant la première lettre du nom de l'activié qu'il souhaite. De plus, graçe à une vue de type calendrier, il peut choisir le jour où il voudrait pratiquer cette activité.
 
-La segonde colonne affiche l'historique des demandes de l'utilisateur comprenant la date de demande, le type d'activitée demandé ainsi que la date choisie pour l'évènement, trier par date de demande.
+La seconde colonne affiche l'historique des demandes de l'utilisateur comprenant la date de demande, le type d'activité demandé ainsi que la date choisie pour l'évènement, triées par date de demande.
 
-Un boutons de déconnexion est aussi proposé à l'utilisateur, ce lien lui permet de cloturer sa séssion et de revenir simplement sur la page de connexion.
+Un bouton de déconnexion est aussi proposé à l'utilisateur ; ce lien lui permet de cloturer sa session et de revenir simplement sur la page de connexion.
 
 \begin{figure}[H]
   \begin{center}
@@ -165,9 +165,9 @@ Un boutons de déconnexion est aussi proposé à l'utilisateur, ce lien lui perm
 \subsection{IHM Administrateur}
 
 \paragraph{}
-L'IHM du responsable est composer de deux colonnes pricipales dont la première est remplie par une liste des évènements affichant la date et le type d'activitée concerné. La segonde colonne est quant à elle desiné à afficher les détail de l'évènement, sélectionner dans la liste de la première colonne, au respossable affin de l'aider dans sont choix. Cette vue est ainsi composé d'un rapelle de la date et de l'activitée concernée ainsi que d'une carte affichant les positions géographique des logement des différents demandeur pour l'évènement. Cette carte affiche de plus les différents lieux qui peuvent être affecté pour l'évènement. Le lieu peut à affecter à l'évènement peut ensuite être choisi soit en selectionnant directement sur la carte ou bien en utilisant le menu déroulant endesous, ce menu étant équiper d'un fonction de recherche permétant d'accéder rapidment à un lieu connu par le responsable.
+L'IHM du responsable est composée de deux colonnes principales dont la première est remplie par une liste des évènements sans lieu, affichant la date et le type d'activité concerné. La seconde colonne est quant à elle destinée à afficher les détails de l'évènement sélectionné dans la liste de la première colonne au responsable afin de l'aider dans le choix du lieu pour l'événement. Cette vue est ainsi composée d'un rappel de la date et de l'activité concernée ainsi que d'une carte affichant les positions géographiques des logements des différents participants à l'événement. Cette carte affiche de plus les différents lieux qui peuvent être affectés pour l'évènement. Le lieu à affecter à l'évènement peut ensuite être choisi soit en selectionnant directement sur la carte soit en utilisant le menu déroulant en dessous, ce menu étant équipé d'un fonction de recherche permettant d'accéder rapidement à un lieu connu par le responsable.
 
-L'IHM du responsable n'étant accesible que depuis un lieu particulier il n'est pas nécésaire d'avoir une interface de connexion et déconnexion.
+L'IHM du responsable n'étant accesible que depuis un lieu particulier il n'est pas nécessaire d'avoir une interface de connexion et de déconnexion.
 
 \begin{figure}[H]
   \begin{center}
