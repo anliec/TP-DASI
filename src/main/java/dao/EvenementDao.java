@@ -59,7 +59,7 @@ public class EvenementDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Evenement> evenement = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Evenement WHERE Lieu_Id IS NULL a");
+            Query q = em.createQuery("SELECT a FROM Evenement WHERE Lieu_Id IS NULL");
             evenement = (List<Evenement>) q.getResultList();
         }
         catch(Exception e) {
@@ -81,7 +81,7 @@ public class EvenementDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Evenement> evenement = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Evenement WHERE Lieu_Id = " + idLieu + " a");
+            Query q = em.createQuery("SELECT a FROM Evenement WHERE Lieu_Id = " + idLieu + " ");
             evenement = (List<Evenement>) q.getResultList();
         }
         catch(Exception e) {
