@@ -77,7 +77,7 @@ public class DemandeDao {
                 ret.add(d);
             }
             else{
-                System.out.println(d);
+                System.out.println("traiter: "+d.getTraite()+" date: "+d.getDateEvenement()+" != "+demandeDate);
             }
         }
         System.out.println("demande selectionner: "+ret.size());
