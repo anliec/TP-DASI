@@ -69,7 +69,7 @@ public class DemandeDao {
         catch(Exception e) {
             throw e;
         }
-        System.out.println("demande trouver: "+demande.size());
+        System.out.println("demandes trouvees : "+demande.size());
         List<Demande> ret = new LinkedList<>();
         for (Demande d:demande) {
             if(/*d.getActivite().equals(activite) &&*/ d.getTraite().equals(false) && d.getDateEvenement().getDate()==demandeDate.getDate() && 
@@ -78,10 +78,10 @@ public class DemandeDao {
                 ret.add(d);
             }
             else{
-                System.out.println("traiter: "+d.getTraite()+" date: "+d.getDateEvenement()+" != "+demandeDate);
+                System.out.println("traitee: "+d.getTraite()+" date: "+d.getDateEvenement()+" != "+demandeDate);
             }
         }
-        System.out.println("demande selectionner: "+ret.size());
+        System.out.println("demande selectionnee: "+ret.size());
         return ret;
     }
 

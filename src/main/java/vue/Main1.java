@@ -50,5 +50,5 @@ public class Main1 {
         serviceMetier.creerEvenement(event2equipe);
         serviceMetier.affecterLieuAEvenement(lieu, event1equipe);
         serviceMetier.affecterLieuAEvenement(lieu, event2equipe);
-    }  
+    }
 }
