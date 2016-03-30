@@ -10,9 +10,9 @@
     <class>metier.modele.Evenement2equipes</class>
     <class>metier.modele.Evenement1equipe</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby:/home/nicolas/Programation/java/TP-DASI/db;create=true"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DASIdb"/>
       <property name="javax.persistence.jdbc.password" value="B3129"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.user" value="PLNico"/>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
