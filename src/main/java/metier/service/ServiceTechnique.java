@@ -169,7 +169,7 @@ public abstract class ServiceTechnique {
         } 
       
         List<Adherent> ret = ((Evenement2equipes) evenement).getListeEquipeA();
-        ret.addAll(((Evenement2equipes) evenement).getListeEquipeA());
+        ret.addAll(((Evenement2equipes) evenement).getListeEquipeB());
         return ret;
     }
 }

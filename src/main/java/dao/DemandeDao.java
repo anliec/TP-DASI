@@ -72,7 +72,8 @@ public class DemandeDao {
         System.out.println("demande trouver: "+demande.size());
         List<Demande> ret = new LinkedList<>();
         for (Demande d:demande) {
-            if(/*d.getActivite().equals(activite) &&*/ d.getTraite().equals(false) && d.getDateEvenement().equals(demandeDate))
+            if(/*d.getActivite().equals(activite) &&*/ d.getTraite().equals(false) && d.getDateEvenement().getDate()==demandeDate.getDate() && 
+                    d.getDateEvenement().getMonth()==demandeDate.getMonth() && d.getDateEvenement().getYear()==demandeDate.getYear())
             {
                 ret.add(d);
             }

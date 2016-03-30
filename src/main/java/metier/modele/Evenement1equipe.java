@@ -2,6 +2,7 @@ package metier.modele;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
@@ -13,6 +14,7 @@ import javax.persistence.ManyToMany;
 public class Evenement1equipe extends Evenement {
 
     @ManyToMany
+    @ElementCollection
     private List<Adherent> listeAdherents;
 
     public Evenement1equipe() {
