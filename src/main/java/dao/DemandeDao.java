@@ -63,20 +63,24 @@ public class DemandeDao {
         EntityManager em = JpaUtil.obtenirEntityManager();
         List<Demande> demande = null;
         try {
-            Query q = em.createQuery("SELECT a FROM Demande a");
+            Query q = em.createQuery("SELECT a FROM Demande a WHERE a.activite.id="+activite.getId());
             demande = (List<Demande>) q.getResultList();
         }
         catch(Exception e) {
             throw e;
         }
+        System.out.println("demande trouver: "+demande.size());
         List<Demande> ret = new LinkedList<>();
         for (Demande d:demande) {
-            if(d.getActivite().equals(activite) && d.getTraite().equals(false) && d.getDateEvenement().equals(demandeDate))
+            if(/*d.getActivite().equals(activite) &&*/ d.getTraite().equals(false) && d.getDateEvenement().equals(demandeDate))
             {
                 ret.add(d);
             }
+            else{
+                System.out.println(d);
+            }
         }
-
+        System.out.println("demande selectionner: "+ret.size());
         return ret;
     }
 
