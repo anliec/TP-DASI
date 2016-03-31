@@ -2,6 +2,7 @@ package metier.modele;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -15,9 +16,11 @@ public class Evenement2equipes extends Evenement {
 
     @ManyToMany
     @JoinTable(name = "ListeEquipeA")
+    @ElementCollection
     private List<Adherent> equipeA;
     @ManyToMany
     @JoinTable(name = "ListeEquipeB")
+    @ElementCollection
     private List<Adherent> equipeB;
 
     public Evenement2equipes() {

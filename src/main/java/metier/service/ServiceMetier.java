@@ -154,6 +154,8 @@ public class ServiceMetier {
             }
             
             JpaUtil.fermerEntityManager();
+            //essaye de creer un evenement:
+            rechercherEtCreerEvenement(demande.getActivite(),demande.getDateEvenement());
             
         } catch (Exception e) {
             
@@ -492,6 +494,7 @@ public class ServiceMetier {
      * @return l'evenement creer si la creation a eu lieu, null sinon
      */
     public Evenement rechercherEtCreerEvenement(Activite activite, Date date){
+        System.out.println("tentative de creation eve. act: "+activite.getDenomination()+" date: "+date);
         Evenement event = null;
         try {
             JpaUtil.creerEntityManager();
@@ -519,6 +522,9 @@ public class ServiceMetier {
                         event = new Evenement1equipe(date,activite,equipeA);
                     }
                     evenementDao.create(event);
+                }
+                else{
+                    System.out.println("nb participant: "+activite.getNbParticipants()+" nb demande: "+demandes.size());
                 }
                 JpaUtil.validerTransaction();
 

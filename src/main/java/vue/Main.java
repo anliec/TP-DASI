@@ -73,7 +73,16 @@ public class Main {
         System.out.println(" 0) Quitter");
         System.out.println();
         System.out.print("Que voulez-vous faire ? : ");
-        int s = sc.nextInt();
+        int s;
+        if(sc.hasNextInt()){
+            s = sc.nextInt();
+        }
+        else{
+            while(!sc.hasNextInt()){
+                sc.next();
+            }
+            s=-1;
+        }
         System.out.println();
 
         switch (s)
@@ -151,12 +160,18 @@ public class Main {
                 System.out.println((i++)+": "+e);
             }
             System.out.println();
+            if(evenementList.size() == 0){
+                return;
+            }
         }
         Evenement event;
         do{
             System.out.println("A quel evenement voullez vous affecter un lieu ? [id]");
             long eventId = sc.nextLong();
             event = serviceMetier.trouverEvenement(eventId);
+            if(eventId == -1){
+                return;
+            }
         }while(event==null);
         System.out.print("Voulez vous une liste des lieux ? [O/n]:");
         r = sc.next();
