@@ -10,7 +10,7 @@ import metier.service.ServiceMetier;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
+import metier.service.ServiceTest;
 
 /**
  *
@@ -18,8 +18,7 @@ import java.util.Scanner;
  */
 public class Main {
 
-    public static Scanner sc = new Scanner(System.in);
-    public static ServiceMetier serviceMetier = new ServiceMetier();
+    private static final ServiceMetier serviceMetier = new ServiceMetier();
 
     public static void main(String[] args) {
 
@@ -74,12 +73,12 @@ public class Main {
         System.out.println();
         System.out.print("Que voulez-vous faire ? : ");
         int s;
-        if(sc.hasNextInt()){
-            s = sc.nextInt();
+        if(ServiceTest.hasNextInt()){
+            s = ServiceTest.nextInt();
         }
         else{
-            while(!sc.hasNextInt()){
-                sc.next();
+            while(!ServiceTest.hasNextInt()){
+                ServiceTest.next();
             }
             s=-1;
         }
@@ -111,7 +110,7 @@ public class Main {
                 creerLieu();
                 break;
             default:
-                System.out.println("saissie incorect, veulliez entrer une valeur correcte");
+                System.out.println("saisie incorecte, veuillez entrer une valeur correcte");
                 System.out.println();
         }
 
@@ -120,7 +119,7 @@ public class Main {
 
     public static void listerActivites(){
         System.out.println();
-        System.out.println("liste des activitee:");
+        System.out.println("liste des activites:");
         List<Activite> activiteList = serviceMetier.obtenirActivitees();
         int i=0;
         for (Activite a:activiteList) {
@@ -134,8 +133,8 @@ public class Main {
         System.out.println();
         Adherent adherent;
         do{
-            System.out.println("Pour quel adherent voullez vous avoir la liste ? [mail adherent]");
-            String mail = sc.next();
+            System.out.println("Pour quel adherent voulez vous avoir la liste ? [mail adherent]");
+            String mail = ServiceTest.next();
             adherent = serviceMetier.trouverAdherent(mail);
         }while (adherent == null);
         System.out.println();
@@ -151,7 +150,7 @@ public class Main {
     public static void affecterUnLieu(){
         System.out.println();
         System.out.print("Voulez vous une liste des evenements sans lieu ? [O/n]:");
-        String r = sc.next();
+        String r = ServiceTest.next();
         System.out.println();
         if(!r.equals("n") && !r.equals("N")){
             List<Evenement> evenementList = serviceMetier.obtenirEvenementSansLieu();
@@ -166,15 +165,15 @@ public class Main {
         }
         Evenement event;
         do{
-            System.out.println("A quel evenement voullez vous affecter un lieu ? [id]");
-            long eventId = sc.nextLong();
+            System.out.println("A quel evenement voulez vous affecter un lieu ? [id]");
+            long eventId = ServiceTest.nextLong();
             event = serviceMetier.trouverEvenement(eventId);
             if(eventId == -1){
                 return;
             }
         }while(event==null);
         System.out.print("Voulez vous une liste des lieux ? [O/n]:");
-        r = sc.next();
+        r = ServiceTest.next();
         if(!r.equals("n") && !r.equals("N")){
             List<Lieu> lieuList = serviceMetier.obtenirLieux();
             int i=0;
@@ -185,8 +184,8 @@ public class Main {
         }
         Lieu lieu;
         do{
-            System.out.println("A quel lieu voullez vous affecter cet evenement ? [id]");
-            long lieuId = sc.nextLong();
+            System.out.println("A quel lieu voulez vous affecter cet evenement ? [id]");
+            long lieuId = ServiceTest.nextLong();
             lieu = serviceMetier.trouverLieu(lieuId);
         }while(lieu==null);
         serviceMetier.affecterLieuAEvenement(lieu,event);
@@ -197,8 +196,8 @@ public class Main {
         System.out.println();
         System.out.println("creation d'un nouvel adherent:");
         System.out.print("adresse mail: ");
-        String mail = sc.next();
-        System.out.println("[les autres paramettres sont en dure dans le code]");
+        String mail = ServiceTest.next();
+        System.out.println("[les autres parametres sont en dur dans le code]");
         Adherent a = new Adherent("Edouard","Dupont","20 avenue albert Einstein 69100 Villeurbanne France",mail);
         if(serviceMetier.creerAdherent(a)==1){
             System.out.print("[OK]");
@@ -213,11 +212,11 @@ public class Main {
         System.out.println();
         Adherent a;
         do{
-            System.out.print("Quel adherent creer la demande ? [mail]: ");
-            String mail = sc.next();
+            System.out.print("Quel adherent cree la demande ? [mail]: ");
+            String mail = ServiceTest.next();
             a = serviceMetier.trouverAdherent(mail);
         }while (a==null);
-        System.out.println("[les autres paramettres sont en dure dans le code]");
+        System.out.println("[les autres parametres sont en dur dans le code]");
         Activite act = serviceMetier.obtenirActivitees().get(0);
         Demande demande = new Demande(new Date(), new Date(), a,act);
         serviceMetier.creerDemande(demande);
@@ -228,32 +227,34 @@ public class Main {
         System.out.println();
         System.out.println("Creation d'une nouvelle activite:");
         System.out.print("Quel est le nom de cette activite ?: ");
-        String nom = sc.next();
+        String nom = ServiceTest.next();
         System.out.println();
         System.out.print("Est-ce une activite par equipe ? [O/n]: ");
-        String r = sc.next();
+        String r = ServiceTest.next();
         boolean equipe = false;
         if(!r.equals("n") && !r.equals("N")){
             equipe = true;
         }
         System.out.println();
-        System.out.print("Combien y a t'il de participant ?: ");
-        int nbrParticipant = sc.nextInt();
+        System.out.print("Combien y a t'il de participants ?: ");
+        int nbrParticipant = ServiceTest.nextInt();
         System.out.println();
         serviceMetier.creerActivite(new Activite(nom,equipe,nbrParticipant));
     }
 
-    public static void creerLieu(){
+    public static void creerLieu() {
         System.out.println();
         System.out.println("Creation d'un nouveau lieu:");
         System.out.print("Quel est le nom de ce lieu ?: ");
-        String nom = sc.next();
+        String nom = ServiceTest.nextLine();
         System.out.println();
         System.out.print("Pouvez-vous donner une description de ce lieu ?: ");
-        String description = sc.next();
+        ServiceTest.next();
+        String description = ServiceTest.nextLine();
         System.out.println();
         System.out.print("Pouvez-vous donner l'adresse de ce lieu ?: ");
-        String adresse = sc.next();
+        ServiceTest.next();
+        String adresse = ServiceTest.nextLine();
         System.out.println();
         serviceMetier.creerLieu(new Lieu(nom,description,adresse));
     }

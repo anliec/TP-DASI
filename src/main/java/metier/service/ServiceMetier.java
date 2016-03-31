@@ -157,6 +157,13 @@ public class ServiceMetier {
             //essaye de creer un evenement:
             rechercherEtCreerEvenement(demande.getActivite(),demande.getDateEvenement());
             
+            // lecture au clavier pour suspendre temporairement l'execution
+            System.out.println("Appyuer sur un chiffre puis ENTER pour poursuivre\n"
+                    + "la tentative de creation d'un evenement");
+            ServiceTest.nextInt();
+            // essaye de creer un evenement:
+            rechercherEtCreerEvenement(demande.getActivite(),demande.getDateEvenement());
+            
         } catch (Exception e) {
             
             System.err.println("entiyManager creation error");
